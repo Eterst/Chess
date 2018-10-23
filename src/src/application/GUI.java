@@ -1,4 +1,4 @@
-package application;
+package src.application;
 	
 import java.util.Optional;
 
@@ -14,7 +14,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 
@@ -22,11 +24,9 @@ public class GUI extends Application {
 	
 	public GridPane grid;
 	
-	public static Chessman selection;
+	public static ChessmanGUI selection;
 	
 	public static GUI gui;
-	
-	public static long time;
 	
 	public void fill() {
 		//adding Squares
@@ -43,79 +43,79 @@ public class GUI extends Application {
 		Square temp;
 		for(int i = 1;i<58;i+=8) {
 			temp = (Square) grid.getChildren().get(i);
-			Chessman chess= new Chessman("b", "P", temp);
+			ChessmanGUI chess= new ChessmanGUI("b", "P", temp);
 			temp.addChessman(chess);
 		}
 		for(int i = 6;i<63;i+=8) {
 			temp = (Square) grid.getChildren().get(i);
-			Chessman chess= new Chessman("w", "P", temp);
+			ChessmanGUI chess= new ChessmanGUI("w", "P", temp);
 			temp.addChessman(chess);
 		}
 		//adding pieces
 		//Rooks ( towers) Black
 		temp = (Square) grid.getChildren().get(0);
-		Chessman rook1 = new Chessman("b","R",temp);
+		ChessmanGUI rook1 = new ChessmanGUI("b","R",temp);
 		temp.addChessman(rook1);
 		
 		temp = (Square) grid.getChildren().get(56);
-		Chessman rook2 = new Chessman("b","R",temp);
+		ChessmanGUI rook2 = new ChessmanGUI("b","R",temp);
 		temp.addChessman(rook2);
 		//Rooks ( towers) White
 		temp = (Square) grid.getChildren().get(7);
-		Chessman rook3 = new Chessman("w","R",temp);
+		ChessmanGUI rook3 = new ChessmanGUI("w","R",temp);
 		temp.addChessman(rook3);
 		
 		temp = (Square) grid.getChildren().get(63);
-		Chessman rook4 = new Chessman("w","R",temp);
+		ChessmanGUI rook4 = new ChessmanGUI("w","R",temp);
 		temp.addChessman(rook4);
 		
 		//adding knights
 		temp = (Square) grid.getChildren().get(8);
-		Chessman knights1 = new Chessman("b","N",temp);
+		ChessmanGUI knights1 = new ChessmanGUI("b","N",temp);
 		temp.addChessman(knights1);
 		
 		temp = (Square) grid.getChildren().get(48);
-		Chessman knights2 = new Chessman("b","N",temp);
+		ChessmanGUI knights2 = new ChessmanGUI("b","N",temp);
 		temp.addChessman(knights2);
 		//White
 		temp = (Square) grid.getChildren().get(15);
-		Chessman knights3 = new Chessman("w","N",temp);
+		ChessmanGUI knights3 = new ChessmanGUI("w","N",temp);
 		temp.addChessman(knights3);
 		
 		temp = (Square) grid.getChildren().get(55);
-		Chessman knights4 = new Chessman("w","N",temp);
+		ChessmanGUI knights4 = new ChessmanGUI("w","N",temp);
 		temp.addChessman(knights4);
 		//adding bishops
 		temp = (Square) grid.getChildren().get(16);
-		Chessman bh1 = new Chessman("b","B",temp);
+		ChessmanGUI bh1 = new ChessmanGUI("b","B",temp);
 		temp.addChessman(bh1);
 		
 		temp = (Square) grid.getChildren().get(40);
-		Chessman bh2 = new Chessman("b","B",temp);
+		ChessmanGUI bh2 = new ChessmanGUI("b","B",temp);
 		temp.addChessman(bh2);
 		//White
 		temp = (Square) grid.getChildren().get(23);
-		Chessman bh3 = new Chessman("w","B",temp);
+		ChessmanGUI bh3 = new ChessmanGUI("w","B",temp);
 		temp.addChessman(bh3);
 		
 		temp = (Square) grid.getChildren().get(47);
-		Chessman bh4 = new Chessman("w","B",temp);
+		ChessmanGUI bh4 = new ChessmanGUI("w","B",temp);
 		temp.addChessman(bh4);
 		//adding kings
 		temp = (Square) grid.getChildren().get(24);
-		Chessman k1 = new Chessman("b","K",temp);
+		ChessmanGUI k1 = new ChessmanGUI("b","K",temp);
 		temp.addChessman(k1);
 		//White
 		temp = (Square) grid.getChildren().get(31);
-		Chessman k2 = new Chessman("w","K",temp);
+		ChessmanGUI k2 = new ChessmanGUI("w","K",temp);
 		temp.addChessman(k2);
 		//adding kings
 		temp = (Square) grid.getChildren().get(32);
-		Chessman q1 = new Chessman("b","Q",temp);
+		ChessmanGUI q1 = new ChessmanGUI("b","Q",temp);
 		temp.addChessman(q1);
 		//White
 		temp = (Square) grid.getChildren().get(39);
-		Chessman q2 = new Chessman("w","Q",temp);
+		ChessmanGUI q2 = new ChessmanGUI("w","Q",temp);
 		temp.addChessman(q2);
 	}
 	
@@ -166,16 +166,16 @@ public class GUI extends Application {
 	   	cuadroalerta.setTitle("Pantalla completa");
 		cuadroalerta.setHeaderText(null);
 		cuadroalerta.initStyle(StageStyle.UTILITY);
-		cuadroalerta.setContentText("Â¿Quiere usar pantalla completa");
+		cuadroalerta.setContentText("¿Quiere usar pantalla completa?");
 
 		Optional<ButtonType> result = cuadroalerta.showAndWait();
 		if(result.get() == ButtonType.OK){
 			primaryStage.setFullScreen(true);
 		}
 		cuadroalerta.close();
+		
 		scene.setFill(Paint.valueOf("#312E2B"));
 		// "@../../source/gray.png"
-		time = System.currentTimeMillis();
 		primaryStage.show();
 	}
 	
