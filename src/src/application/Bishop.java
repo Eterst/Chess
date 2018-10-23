@@ -11,7 +11,7 @@ public class Bishop extends Chessman{
 		coords = new Coords();
 	}
 	@Override
-	public boolean verificarMov(Coords coords) {
-		return false;
+	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
+		return true;
 	}
 }

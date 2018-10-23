@@ -73,6 +73,8 @@ public class ChessmanGUI extends Pane{
 		EventHandler<Event> event = new EventHandler<Event>() {
 			@Override
 			public void handle(Event e) {
+				
+				/* TODO si se quiere no cambiar de pieza al tener una selecciona dejar if
 				if(GUI.selection == null) {
 					System.out.println("Selected!");
 					select();
@@ -80,7 +82,9 @@ public class ChessmanGUI extends Pane{
 					GUI.selection = null;
 					System.out.println("Selected!");
 					select();
-				}
+				}*/
+				System.out.println("Selected!");
+				select();
 				
 				System.out.println("Fil = "+chessman.coords.row+" Col: "+chessman.coords.column);
 				System.out.println("Your clicked a Piece");

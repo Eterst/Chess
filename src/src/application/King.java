@@ -12,7 +12,7 @@ public class King extends Chessman{
 	}
 	
 	@Override
-	public boolean verificarMov(Coords coords) {
-		return false;
+	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
+		return true;
 	}
 }

@@ -37,7 +37,13 @@ public class Square extends Pane{
 		getChildren().clear();
 		getChildren().add(piece);
 	}
-	
+	public void moveChessman(ChessmanGUI chess) {
+		System.out.println("Cambia");
+		chess.square.piece = null;
+		addChessman(chess);
+		//GUI.selection.square.clear();
+		chess = null;
+	}
 	public Square(int color, int i, int j) {
 		/*
 		row = i;
@@ -57,34 +63,20 @@ public class Square extends Pane{
 			public void handle(Event e) {
 				if(piece == null) {
 					if(GUI.selection != null) {
-						if(GUI.selection.chessman.type == "P" ) { 
-							if(GUI.selection.chessman.color == 2 && GUI.selection.chessman.coords.column == coords.column && (coords.row == GUI.selection.chessman.coords.row-2 || coords.row == GUI.selection.chessman.coords.row-1)) {
-								System.out.println("Cambia");
-								GUI.selection.square.piece = null;
-								addChessman(GUI.selection);
-								//GUI.selection.square.clear();
-								GUI.selection = null;
-							}
-							else if(GUI.selection.chessman.color == 1 && GUI.selection.chessman.coords.column == coords.column && (coords.row == GUI.selection.chessman.coords.row+2 || coords.row == GUI.selection.chessman.coords.row+1)) {
-								System.out.println("Cambia");
-								GUI.selection.square.piece = null;
-								addChessman(GUI.selection);
-								//GUI.selection.square.clear();
-								GUI.selection = null;
+						if(GUI.selection.chessman.verificarMov(coords)) {
+							moveChessman(GUI.selection);
+						}
+						/*
+						if(GUI.selection.chessman.type == "P" ) { // TODO **Eliminado por cambio**
+							if(GUI.selection.chessman.verificarMov(coords)) {
+								moveChessman(GUI.selection);
 							}
 						}else if(GUI.selection.chessman.type == "R" && (GUI.selection.chessman.coords.column == coords.column || GUI.selection.chessman.coords.row == coords.row)){
-							System.out.println("Cambia");
-							GUI.selection.square.piece = null;
-							addChessman(GUI.selection);
-							//GUI.selection.square.clear();
-							GUI.selection = null;
+							moveChessman(GUI.selection);
 						}else if(GUI.selection.chessman.type != "R" && GUI.selection.chessman.type != "P"){
-							System.out.println("Cambia");
-							GUI.selection.square.piece = null;
-							addChessman(GUI.selection);
-							//GUI.selection.square.clear();
-							GUI.selection = null;
+							moveChessman(GUI.selection);
 						}
+						*/
 					}
 					System.out.println("Fil = "+coords.row+" Col: "+coords.column);
 					System.out.println("Your clicked a square");
