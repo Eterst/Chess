@@ -12,6 +12,11 @@ public class Rook extends Chessman{
 	}
 	@Override
 	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
-		return true;
+		if(GUI.selection.chessman.type == "R" && (GUI.selection.chessman.coords.column == coords.column || GUI.selection.chessman.coords.row == coords.row)){
+			return true;
+		}else if(GUI.selection.chessman.type != "R" && GUI.selection.chessman.type != "P"){
+			return true;
+		}
+		return false;
 	}
 }
