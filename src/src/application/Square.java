@@ -38,6 +38,10 @@ public class Square extends Pane{
 		getChildren().add(piece);
 	}
 	public void moveChessman(ChessmanGUI chess) {
+		Chessman temp = Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column];
+		Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column] = null;
+		Chessboard.chessboard.board[coords.row][coords.column] = temp;
+		
 		System.out.println("Cambia");
 		chess.square.piece = null;
 		addChessman(chess);
@@ -80,7 +84,9 @@ public class Square extends Pane{
 					}
 					System.out.println("Fil = "+coords.row+" Col: "+coords.column);
 					System.out.println("Your clicked a square");
+					
 				}
+				Chessboard.chessboard.printBoard();
 			}
 		};
 		setOnMouseClicked(event);
