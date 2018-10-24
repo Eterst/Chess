@@ -170,6 +170,7 @@ public class GUI extends Application {
 		//Cosas xd
 		grid = new GridPane();
 		grid.setVgap(0);
+		grid.setHgap(0);
 		root.getChildren().add(grid);
 		grid.setLayoutX(30);
 		grid.setLayoutY(30);

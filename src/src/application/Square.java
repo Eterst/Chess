@@ -34,7 +34,7 @@ public class Square extends Pane{
 		chess.chessman.coords = coords;
 		chess.square = this;
 		piece = chess;
-		getChildren().clear();
+		getChildren().remove(piece);
 		getChildren().add(piece);
 	}
 	public void moveChessman(ChessmanGUI chess) {
@@ -45,7 +45,7 @@ public class Square extends Pane{
 		System.out.println("Cambia");
 		chess.square.piece = null;
 		addChessman(chess);
-		//GUI.selection.square.clear();
+		//chess.square.clear();
 		chess = null;
 	}
 	public Square(int color, int i, int j) {
