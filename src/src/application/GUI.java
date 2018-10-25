@@ -11,13 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 
 public class GUI extends Application {
@@ -27,6 +31,25 @@ public class GUI extends Application {
 	public static ChessmanGUI selection;
 	
 	public static GUI gui;
+	
+	public Label actualPlayer;
+	
+	public void updatePlayer(){
+		if(Chessboard.chessboard.turnWhite) {
+			actualPlayer.setText("Turn of White's");
+		}else {
+			actualPlayer.setText("Turn of Black's");
+		}
+	}
+	
+	public Label CreateLabel(double x,double y) {
+		Label label = new Label();
+		label.setLayoutX(x);
+		label.setLayoutY(y);
+		label.setTextFill(Color.WHITE);
+		label.setFont(Font.font(28));
+		return label;
+	}
 	
 	public void fill() {
 		Chessboard.chessboard = new Chessboard();
@@ -159,11 +182,17 @@ public class GUI extends Application {
 		
 		ImageView background = new ImageView(new Image("144.png"));
 
+		
+		
 		background.setLayoutX(30);
 		background.setLayoutY(30);
 		background.setFitHeight(640);
 		background.setFitWidth(640);
 		root.getChildren().add(background);
+		
+		actualPlayer = CreateLabel(30,-10);
+		actualPlayer.setText("Turn of White's");
+		root.getChildren().add(actualPlayer);
 		
 		Scene scene = new Scene(root,Screen.getPrimary().getBounds().getMaxY(),Screen.getPrimary().getBounds().getMaxY());
 		

@@ -69,6 +69,8 @@ public class Square extends Pane{
 					if(GUI.selection != null) {
 						if(GUI.selection.chessman.verificarMov(coords)) {
 							moveChessman(GUI.selection);
+							Chessboard.chessboard.turnWhite = !(Chessboard.chessboard.turnWhite);
+							GUI.gui.updatePlayer();
 						}
 						/*
 						if(GUI.selection.chessman.type == "P" ) { // TODO **Eliminado por cambio**

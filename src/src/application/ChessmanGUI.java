@@ -42,6 +42,14 @@ public class ChessmanGUI extends Pane{
 	public void select() {
 		GUI.selection = this;
 	}
+	public boolean confirmSelect() {
+		if(chessman.color == 2 && Chessboard.chessboard.turnWhite) {
+			return true;
+		}else if(chessman.color == 1 && !(Chessboard.chessboard.turnWhite)) {
+			return true;
+		}
+		return false;
+	}
 	public Chessman selectPiece(String color, String piece) { // TODO crear constructores de las clases
 		Chessman chessman;
 		if(piece == "P") {
@@ -73,19 +81,22 @@ public class ChessmanGUI extends Pane{
 		EventHandler<Event> event = new EventHandler<Event>() {
 			@Override
 			public void handle(Event e) {
-				
-				/* TODO si se quiere no cambiar de pieza al tener una selecciona dejar if
+				/*
 				if(GUI.selection == null) {
-					System.out.println("Selected!");
-					select();
+					if(confirmSelect()) {
+						System.out.println("Selected!");
+						select();
+					}
 				}else if(GUI.selection != null) {
-					GUI.selection = null;
+					if(confirmSelect()) {
+						System.out.println("Selected!");
+						select();
+					}
+				}*/
+				if(confirmSelect()) {
 					System.out.println("Selected!");
 					select();
-				}*/
-				System.out.println("Selected!");
-				select();
-				
+				}
 				System.out.println("Fil = "+chessman.coords.row+" Col: "+chessman.coords.column);
 				System.out.println("Your clicked a Piece");
 			}

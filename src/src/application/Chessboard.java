@@ -3,6 +3,8 @@ package src.application;
 public class Chessboard {
 	public Chessman[][] board;
 	
+	public boolean turnWhite = true;
+	
 	public boolean playable;
 	/* TODO Ver si es necesario
 	public String player1Name;
