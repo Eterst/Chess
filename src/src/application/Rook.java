@@ -11,11 +11,15 @@ public class Rook extends Chessman{
 		coords = new Coords();
 	}
 	@Override
-	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
-		if(GUI.selection.chessman.type == "R" && (GUI.selection.chessman.coords.column == coords.column || GUI.selection.chessman.coords.row == coords.row)){
-			return true;
-		}else if(GUI.selection.chessman.type != "R" && GUI.selection.chessman.type != "P"){
-			return true;
+	public boolean verificarMov(Coords destinationCoords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
+		if(coords.column == destinationCoords.column){
+			if(Chessboard.chessboard.verticalVerif(coords.column,coords.row,destinationCoords.row)) {
+				return true;
+			}
+		}else if(coords.row == destinationCoords.row) {
+			if(Chessboard.chessboard.horizontalVerif(coords.row, coords.column, destinationCoords.column)) {
+				return true;
+			}
 		}
 		return false;
 	}
