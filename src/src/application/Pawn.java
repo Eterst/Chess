@@ -33,21 +33,21 @@ public class Pawn extends Chessman{
 			return true;
 		}
 		else if(color == 2 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row - 1) {
-			if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
-			/* comer(coords);
-			 * return true;
-			 *} else {
-			 */
-			return false;
+			if(Chessboard.chessboard.board[coords.row][coords.column] != null) {
+				if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 		else if(color == 1 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row + 1) {
-			if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
-			/* comer(coords);
-			 * return true;
-			 *} else {
-			 */
-			return false;
+			if(Chessboard.chessboard.board[coords.row][coords.column] != null) {
+				if(Chessboard.chessboard.board[coords.row][coords.column].color == 2) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 		return false;
