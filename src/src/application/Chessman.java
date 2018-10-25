@@ -23,4 +23,6 @@ public class Chessman {
 	*/
 	
 	public boolean verificarMov(Coords coords){return false;}; // Metodo que va a ser Sobreescrito en las clases hijo
+	
+	public boolean verificarComer(Coords coords) {return true;}
 }

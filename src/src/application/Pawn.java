@@ -15,9 +15,9 @@ public class Pawn extends Chessman{
 		type = "P";
 		coords = new Coords();
 	}
-	// TODO
+	// TODO Agregar metodo de peon al paso
 	@Override
-	public boolean verificarMov(Coords coords) { // TODO Agregar metodo de comer y peon al paso
+	public boolean verificarMov(Coords coords) { 
 		if(color == 2 && this.coords.column == coords.column && ((coords.row == this.coords.row - 2 && movs == 0) || coords.row == this.coords.row - 1)) {
 			if(coords.row == this.coords.row - 2 ) {
 				twoMovsUsed = true;
@@ -32,7 +32,11 @@ public class Pawn extends Chessman{
 			movs++;
 			return true;
 		}
-		else if(color == 2 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row - 1) {
+		return false;
+	}
+	@Override
+	public boolean verificarComer(Coords coords) {
+		if(color == 2 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row - 1) {
 			if(Chessboard.chessboard.board[coords.row][coords.column] != null) {
 				if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
 					return true;
