@@ -65,23 +65,22 @@ public class Square extends Pane{
 		event = new EventHandler<Event>() {
 			@Override
 			public void handle(Event e) {
-				if(piece == null) {
-					if(GUI.selection != null) {
-						if(GUI.selection.chessman.verificarMov(coords)) {
-							moveChessman(GUI.selection);
-							GUI.selection = null;
-							System.out.println("Antes: "+Chessboard.chessboard.turnWhite);
-							if(Chessboard.chessboard.turnWhite) {
-								Chessboard.chessboard.turnWhite = false;
-							}else if(!Chessboard.chessboard.turnWhite) {
-								Chessboard.chessboard.turnWhite = true;
-							}
-							System.out.println("Despues: "+Chessboard.chessboard.turnWhite);
-							GUI.gui.updatePlayer();
-							
+				if(GUI.selection != null) {
+					if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
+						moveChessman(GUI.selection);
+						GUI.selection = null;
+						System.out.println("Antes: "+Chessboard.chessboard.turnWhite);
+						if(Chessboard.chessboard.turnWhite) {
+							Chessboard.chessboard.turnWhite = false;
+						}else if(!Chessboard.chessboard.turnWhite) {
+							Chessboard.chessboard.turnWhite = true;
 						}
+						System.out.println("Despues: "+Chessboard.chessboard.turnWhite);
+						GUI.gui.updatePlayer();
 					}
-				}else {
+					System.out.println("Fil = "+coords.row+" Col: "+coords.column);
+					System.out.println("Your clicked a square");
+				}/*else {
 					if(GUI.selection != null) {
 						if(GUI.selection.chessman.verificarComer(coords)) {
 							moveChessman(GUI.selection);
@@ -95,12 +94,7 @@ public class Square extends Pane{
 							GUI.gui.updatePlayer();
 						}
 					}
-					
-					System.out.println("Fil = "+coords.row+" Col: "+coords.column);
-					System.out.println("Your clicked a square");
-				}
-					
-				//}
+				}*/
 				Chessboard.chessboard.printBoard();
 			}
 		};
