@@ -17,20 +17,38 @@ public class Pawn extends Chessman{
 	}
 	// TODO
 	@Override
-	public boolean verificarMov(Coords coords) { // TODO Agregar movimientos de comer
-		if(GUI.selection.chessman.color == 2 && GUI.selection.chessman.coords.column == coords.column && ((coords.row == GUI.selection.chessman.coords.row-2 && movs == 0) || coords.row == GUI.selection.chessman.coords.row-1)) {
-			if(coords.row == GUI.selection.chessman.coords.row-2 ) {
+	public boolean verificarMov(Coords coords) { // TODO Agregar metodo de comer y peon al paso
+		if(color == 2 && this.coords.column == coords.column && ((coords.row == this.coords.row - 2 && movs == 0) || coords.row == this.coords.row - 1)) {
+			if(coords.row == this.coords.row - 2 ) {
 				twoMovsUsed = true;
 			}
 			movs++;
 			return true;
 		}
-		else if(GUI.selection.chessman.color == 1 && GUI.selection.chessman.coords.column == coords.column && ((coords.row == GUI.selection.chessman.coords.row+2 && movs == 0) || coords.row == GUI.selection.chessman.coords.row+1)) {
-			if(coords.row == GUI.selection.chessman.coords.row+2 ) {
+		else if(color == 1 && this.coords.column == coords.column && ((coords.row == this.coords.row + 2 && movs == 0) || coords.row == this.coords.row + 1)) {
+			if(coords.row == this.coords.row + 2 ) {
 				twoMovsUsed = true;
 			}
 			movs++;
 			return true;
+		}
+		else if(color == 2 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row - 1) {
+			if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
+			/* comer(coords);
+			 * return true;
+			 *} else {
+			 */
+			return false;
+			}
+		}
+		else if(color == 1 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row + 1) {
+			if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
+			/* comer(coords);
+			 * return true;
+			 *} else {
+			 */
+			return false;
+			}
 		}
 		return false;
 	}
