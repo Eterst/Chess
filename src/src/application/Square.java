@@ -69,6 +69,7 @@ public class Square extends Pane{
 					if(GUI.selection != null) {
 						if(GUI.selection.chessman.verificarMov(coords)) {
 							moveChessman(GUI.selection);
+							GUI.selection = null;
 							System.out.println("Antes: "+Chessboard.chessboard.turnWhite);
 							if(Chessboard.chessboard.turnWhite) {
 								Chessboard.chessboard.turnWhite = false;
@@ -84,6 +85,7 @@ public class Square extends Pane{
 					if(GUI.selection != null) {
 						if(GUI.selection.chessman.verificarComer(coords)) {
 							moveChessman(GUI.selection);
+							GUI.selection = null;
 							if(Chessboard.chessboard.turnWhite) {
 								Chessboard.chessboard.turnWhite = false;
 							}else if(!Chessboard.chessboard.turnWhite) {
