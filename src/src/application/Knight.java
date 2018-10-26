@@ -12,6 +12,13 @@ public class Knight extends Chessman{
 	}
 	@Override
 	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
-		return true;
+		if((this.coords.row - coords.row)*(this.coords.row - coords.row) + (this.coords.column - coords.column)*(this.coords.column - coords.column) == 5) {
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public boolean verificarComer(Coords coords) {
+		return verificarMov(coords);
 	}
 }

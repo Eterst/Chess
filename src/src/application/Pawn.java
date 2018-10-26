@@ -45,7 +45,7 @@ public class Pawn extends Chessman{
 				}
 			}
 		}
-		else if(color == 1 && (this.coords.column - coords.column == 1 || this.coords.column - coords.column == -1) && coords.row == this.coords.row + 1) {
+		else if(color == 1 && Math.abs(this.coords.column - coords.column) == 1 && coords.row == this.coords.row + 1) {
 			if(Chessboard.chessboard.board[coords.row][coords.column] != null) {
 				if(Chessboard.chessboard.board[coords.row][coords.column].color == 2) {
 					return true;
