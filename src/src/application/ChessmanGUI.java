@@ -101,7 +101,7 @@ public class ChessmanGUI extends Pane{
 						select();
 					}
 				}*/
-				if(confirmSelect()) {
+				if(confirmSelect() && Chessboard.chessboard.playable) {
 					System.out.println("Selected!");
 					select();
 				}
