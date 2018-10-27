@@ -5,7 +5,15 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
+/*//////////////////////////
+/* Historial de personas: formato (fecha)-(Persona) ejemplo
+/* 27/10/2018-Jonder
+/* 
+/*
+/* Trabajando Ahora: None
+/* Fecha inicio: None
+/* Fecha terminado: None
+//////////////////////////*/
 public class Square extends Pane{
 	/* Reemplazado con Coods
 	public int row;

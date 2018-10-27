@@ -1,5 +1,13 @@
 package src.application;
-
+/*//////////////////////////
+/* Historial de personas: formato (fecha)-(Persona) ejemplo
+/* 27/10/2018-Jonder
+/* 
+/*
+/* Trabajando Ahora: None
+/* Fecha inicio: None
+/* Fecha terminado: None
+//////////////////////////*/
 public class Knight extends Chessman{
 	public Knight(String color) {
 		if(color == "b") {

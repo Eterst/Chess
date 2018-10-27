@@ -4,7 +4,15 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
+/*//////////////////////////
+/* Historial de personas: formato (fecha)-(Persona) ejemplo
+/* 27/10/2018-Jonder
+/* 
+/*
+/* Trabajando Ahora: None
+/* Fecha inicio: None
+/* Fecha terminado: None
+//////////////////////////*/
 public class ChessmanGUI extends Pane{
 	
 	/* Desactivado para hacer herencia con Chessman

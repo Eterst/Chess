@@ -22,8 +22,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-
-
+/*//////////////////////////
+/* Historial de personas: formato (fecha)-(Persona) ejemplo
+/* 27/10/2018-Jonder
+/* 
+/*
+/* Trabajando Ahora: None
+/* Fecha inicio: None
+/* Fecha terminado: None
+//////////////////////////*/
 public class GUI extends Application {
 	
 	public GridPane grid;
