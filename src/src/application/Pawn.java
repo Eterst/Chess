@@ -2,7 +2,7 @@ package src.application;
 
 public class Pawn extends Chessman{
 	
-	public int movs;
+	//public int movs;
 	
 	public boolean twoMovsUsed;
 	
@@ -15,11 +15,6 @@ public class Pawn extends Chessman{
 		type = "P";
 		coords = new Coords();
 		movs = 0;
-	}
-	
-	@Override
-	public int getMovs() {
-		return this.movs;
 	}
 	
 	// TODO Agregar metodo de peon al paso
@@ -44,6 +39,9 @@ public class Pawn extends Chessman{
 			if(this.coords.row == 3 && Chessboard.chessboard.board[this.coords.row][coords.column] != null) {
 				if(Chessboard.chessboard.board[this.coords.row][coords.column].getMovs() == 1) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
+					// Delete of the chessman in the GUI
+					Square temp = (Square) GUI.gui.grid.getChildren().get(coords.column*8+this.coords.row);
+					temp.clearChessman();
 					return true;
 				}
 			}
@@ -52,6 +50,9 @@ public class Pawn extends Chessman{
 			if(this.coords.row == 4 && Chessboard.chessboard.board[this.coords.row][coords.column] != null) {
 				if(Chessboard.chessboard.board[this.coords.row][coords.column].getMovs() == 1) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
+					// Delete of the chessman in the GUI
+					Square temp = (Square) GUI.gui.grid.getChildren().get(coords.column*8+this.coords.row);
+					temp.clearChessman();
 					return true;
 				}
 			}

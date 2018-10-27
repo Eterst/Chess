@@ -20,10 +20,9 @@ public class Square extends Pane{
 	
 	public EventHandler<Event> event;
 	
-	public void clear() {
+	public void clearChessman() {
+		getChildren().remove(piece);
 		piece = null;
-		getChildren().clear();
-		getChildren().add(square);
 	}
 	
 	public void addChessman(ChessmanGUI chess) {
