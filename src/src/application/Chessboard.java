@@ -73,11 +73,47 @@ public class Chessboard {
 		return true;
 	}
 	public boolean diagonalVerif(Coords coords1, Coords coords2) {
-		for(int i = coords1.row+1,j = coords1.column+1;(i<=coords2.row && j<=coords2.column);i++,j++) {
-			if(board[i][j] != null) {return false;}
+		if(coords1.row<coords2.row && coords1.column<coords2.column) {
+			for(int i = coords1.row+1,j = coords1.column+1;(i<=coords2.row && j<=coords2.column);i++,j++) {
+				if(board[i][j] != null) {return false;}
+			}
+		}else if(coords1.row<coords2.row && coords1.column > coords2.column) {
+			for(int i = coords1.row+1,j = coords1.column-1;(i<=coords2.row && j>= coords2.column);i++,j--) {
+				if(board[i][j] != null) {return false;}
+			}
+		}else if(coords1.row>coords2.row  && coords1.column>coords2.column) {
+			for(int i = coords1.row-1,j = coords1.column-1;(i>=coords2.row && j>= coords2.column);i--,j--) {
+				if(board[i][j] != null) {return false;}
+			}
+		}else if(coords1.row>coords2.row  && coords1.column<coords2.column) {
+			for(int i = coords1.row-1,j = coords1.column+1;(i>=coords2.row && j<= coords2.column);i--,j++) {
+				if(board[i][j] != null) {return false;}
+			}
 		}
 		return true;
 	}
+	
+	public boolean diagonalVerif2(Coords coords1, Coords coords2) {
+		if(coords1.row<coords2.row && coords1.column<coords2.column) {
+			for(int i = coords1.row+1,j = coords1.column+1;(i<coords2.row && j<coords2.column);i++,j++) {
+				if(board[i][j] != null) {return false;}
+			}
+		}else if(coords1.row<coords2.row && coords1.column > coords2.column) {
+			for(int i = coords1.row+1,j = coords1.column-1;(i<coords2.row && j> coords2.column);i++,j--) {
+				if(board[i][j] != null) {return false;}
+			}
+		}else if(coords1.row>coords2.row  && coords1.column>coords2.column) {
+			for(int i = coords1.row-1,j = coords1.column-1;(i>coords2.row && j> coords2.column);i--,j--) {
+				if(board[i][j] != null) {return false;}
+			}
+		}else if(coords1.row>coords2.row  && coords1.column<coords2.column) {
+			for(int i = coords1.row-1,j = coords1.column+1;(i>coords2.row && j< coords2.column);i--,j++) {
+				if(board[i][j] != null) {return false;}
+			}
+		}
+		return true;
+	}
+	
 	public void printFil(int i) {
 		for(int j = 0;j<8;j++) {
 			if(board[i][j] != null) {
