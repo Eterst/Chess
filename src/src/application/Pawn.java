@@ -10,8 +10,6 @@ package src.application;
 //////////////////////////*/
 public class Pawn extends Chessman{
 	
-	//public int movs;
-	
 	public boolean twoMovsUsed;
 	
 	public Pawn(String color) {
@@ -30,22 +28,32 @@ public class Pawn extends Chessman{
 	public boolean verificarMov(Coords coords) { 
 		if(color == 2 && this.coords.column == coords.column && ((coords.row == this.coords.row - 2 && movs == 0) || coords.row == this.coords.row - 1)) {
 			if(coords.row == this.coords.row - 2 ) {
-				twoMovsUsed = true;
+				if(Chessboard.chessboard.board[this.coords.row - 1][this.coords.column] == null) {
+					twoMovsUsed = true;
+					movs++;
+					return true;
+				}
+			} else {
+				movs++;
+				return true;
 			}
-			movs++;
-			return true;
 		}
 		else if(color == 1 && this.coords.column == coords.column && ((coords.row == this.coords.row + 2 && movs == 0) || coords.row == this.coords.row + 1)) {
 			if(coords.row == this.coords.row + 2 ) {
-				twoMovsUsed = true;
+				if(Chessboard.chessboard.board[this.coords.row + 1][this.coords.column] == null) {
+					twoMovsUsed = true;
+					movs++;
+					return true;
+				}
+			} else {
+				movs++;
+				return true;
 			}
-			movs++;
-			return true;
 		}
 		//Peon al paso //TODO Eliminar la pieza que se va a comer de la interfaz
 		else if(color == 2 && Math.abs(this.coords.column - coords.column) == 1 && coords.row == this.coords.row - 1) {
 			if(this.coords.row == 3 && Chessboard.chessboard.board[this.coords.row][coords.column] != null) {
-				if(Chessboard.chessboard.board[this.coords.row][coords.column].getMovs() == 1) {
+				if(Chessboard.chessboard.board[this.coords.row][coords.column].movs == 1) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
 					// Delete of the chessman in the GUI
 					Square temp = (Square) GUI.gui.grid.getChildren().get(coords.column*8+this.coords.row);
@@ -56,7 +64,7 @@ public class Pawn extends Chessman{
 		}
 		else if(color == 1 && Math.abs(this.coords.column - coords.column) == 1 && coords.row == this.coords.row + 1) {
 			if(this.coords.row == 4 && Chessboard.chessboard.board[this.coords.row][coords.column] != null) {
-				if(Chessboard.chessboard.board[this.coords.row][coords.column].getMovs() == 1) {
+				if(Chessboard.chessboard.board[this.coords.row][coords.column].movs == 1) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
 					// Delete of the chessman in the GUI
 					Square temp = (Square) GUI.gui.grid.getChildren().get(coords.column*8+this.coords.row);
