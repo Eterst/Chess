@@ -8,6 +8,8 @@ public class Chessman {
 	
 	public int color;
 	
+	private int movs;
+	
 	/*
 	public Chessman(String color, String piece) { // TODO Posible eliminacion completamente *Conflicto con herencia*
 		int clor;
@@ -21,6 +23,8 @@ public class Chessman {
 		}
 	}
 	*/
+	
+	public int getMovs() {return 0;} //Metodo que va a ser Sobreescrito en las clases hijo
 	
 	public boolean verificarMov(Coords coords){return false;}; // Metodo que va a ser Sobreescrito en las clases hijo
 	
