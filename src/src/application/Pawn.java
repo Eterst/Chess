@@ -92,4 +92,11 @@ public class Pawn extends Chessman{
 		}
 		return false;
 	}
+	@Override
+	public boolean isCoroned() {
+		if(movs == 6 || (movs == 5 && twoMovsUsed)) {
+			return true;
+		}
+		return false;
+	}
 }

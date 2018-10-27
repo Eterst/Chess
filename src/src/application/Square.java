@@ -75,10 +75,8 @@ public class Square extends Pane{
 				if(GUI.selection != null && Chessboard.chessboard.playable) {
 					if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
 						moveChessman(GUI.selection);
-						if(GUI.selection.chessman.type == "P") {
-							if(GUI.selection.chessman.movs == 6 || (GUI.selection.chessman.movs == 5 && GUI.selection.chessman){
-								
-							}
+						if(GUI.selection.chessman.isCoroned()) {
+							// TODO agregar coronacion
 						}
 						GUI.selection = null;
 						System.out.println("Antes: "+Chessboard.chessboard.turnWhite);
