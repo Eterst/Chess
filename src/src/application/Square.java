@@ -72,9 +72,14 @@ public class Square extends Pane{
 		event = new EventHandler<Event>() {
 			@Override
 			public void handle(Event e) {
-				if(GUI.selection != null) {
+				if(GUI.selection != null && Chessboard.chessboard.playable) {
 					if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
 						moveChessman(GUI.selection);
+						if(GUI.selection.chessman.type == "P") {
+							if(GUI.selection.chessman.movs == 6 || (GUI.selection.chessman.movs == 5 && GUI.selection.chessman){
+								
+							}
+						}
 						GUI.selection = null;
 						System.out.println("Antes: "+Chessboard.chessboard.turnWhite);
 						if(Chessboard.chessboard.turnWhite) {
