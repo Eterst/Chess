@@ -31,4 +31,17 @@ public class Rook extends Chessman{
 		}
 		return false;
 	}
+	
+	public boolean verificarComer(Coords destinationCoords) {
+		if(coords.column == destinationCoords.column){
+			if(Chessboard.chessboard.verticalVerif(false,coords.column,coords.row,destinationCoords.row)) {
+				return true;
+			}
+		}else if(coords.row == destinationCoords.row) {
+			if(Chessboard.chessboard.horizontalVerif(false,coords.row, coords.column, destinationCoords.column)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
