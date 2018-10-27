@@ -37,7 +37,7 @@ public class Pawn extends Chessman{
 				movs++;
 				return true;
 			}
-		}
+		}/**/
 		else if(color == 1 && this.coords.column == coords.column && ((coords.row == this.coords.row + 2 && movs == 0) || coords.row == this.coords.row + 1)) {
 			if(coords.row == this.coords.row + 2 ) {
 				if(Chessboard.chessboard.board[this.coords.row + 1][this.coords.column] == null) {
