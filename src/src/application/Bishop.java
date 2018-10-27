@@ -4,9 +4,9 @@ package src.application;
 /* 27/10/2018-Jonder
 /* 
 /*
-/* Trabajando Ahora: Jonder
-/* Fecha inicio: 27/10/2018
-/* Fecha terminado: Sin finalizar
+/* Trabajando Ahora: None
+/* Fecha inicio: 
+/* Fecha terminado: 
 //////////////////////////*/
 public class Bishop extends Chessman{
 	public Bishop(String color) {
