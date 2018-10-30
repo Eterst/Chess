@@ -55,6 +55,23 @@ public class Square extends Pane{
 		//chess.square.clear();
 		chess = null;
 	}
+	public void Coronar(String equipo) {
+		clearChessman();
+		ChessmanGUI pieza;
+		Chessboard.chessboard.board[coords.row][coords.column] = null;
+		int tipoPieza = GUI.gui.elegirPieza(equipo);
+		if(tipoPieza == 1) {
+			pieza = new ChessmanGUI(equipo, "Q", this);
+		} else if(tipoPieza == 2) {
+			pieza = new ChessmanGUI(equipo, "K", this);
+		} else if(tipoPieza == 3) {
+			pieza = new ChessmanGUI(equipo, "R", this);
+		} else {
+			pieza = new ChessmanGUI(equipo, "B", this);
+		}
+		addChessman(pieza);
+		Chessboard.chessboard.board[coords.row][coords.column] = pieza.chessman;
+	}
 	public Square(int color, int i, int j) {
 		/*
 		row = i;
@@ -75,8 +92,13 @@ public class Square extends Pane{
 				if(GUI.selection != null && Chessboard.chessboard.playable) {
 					if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
 						moveChessman(GUI.selection);
-						if(GUI.selection.chessman.isCoroned()) {
-							// TODO agregar coronacion
+						if(GUI.selection.chessman.type.compareTo("P") == 0) {
+							if(GUI.selection.chessman.coords.row == 7) {//TODO En fase de pruebas 
+								Coronar("b");
+							}
+							else if(GUI.selection.chessman.coords.row == 0) {
+								Coronar("w");
+							}
 						}
 						GUI.selection = null;
 						System.out.println("Antes: "+Chessboard.chessboard.turnWhite);

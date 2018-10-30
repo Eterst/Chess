@@ -57,7 +57,9 @@ public class GUI extends Application {
 		label.setFont(Font.font(28));
 		return label;
 	}
-	
+	public int elegirPieza(String equipo) {
+		return 1;
+	}
 	public void fill() {
 		Chessboard.chessboard = new Chessboard();
 		//adding Squares
