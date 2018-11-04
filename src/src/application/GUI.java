@@ -17,6 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -176,6 +178,7 @@ public class GUI extends Application {
 		Chessboard.chessboard = new Chessboard();
 		//adding Squares
 		int temporal = 1;
+		int temp_row = 0;
 		int temp_column = 0;
 		for(int i = 0;i<8;i++) {
 			for(int j = 0; j<8;j++) {
