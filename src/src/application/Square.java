@@ -55,15 +55,15 @@ public class Square extends Pane{
 		//chess.square.clear();
 		chess = null;
 	}
-	public void Coronar(String equipo) {
+	public void Coronar2(String equipo, int tipoPieza) {
 		clearChessman();
 		ChessmanGUI pieza;
 		Chessboard.chessboard.board[coords.row][coords.column] = null;
-		int tipoPieza = GUI.gui.elegirPieza(equipo);
+		//int tipoPieza = GUI.gui.elegirPieza(equipo);
 		if(tipoPieza == 1) {
 			pieza = new ChessmanGUI(equipo, "Q", this);
 		} else if(tipoPieza == 2) {
-			pieza = new ChessmanGUI(equipo, "K", this);
+			pieza = new ChessmanGUI(equipo, "N", this);
 		} else if(tipoPieza == 3) {
 			pieza = new ChessmanGUI(equipo, "R", this);
 		} else {
@@ -71,6 +71,12 @@ public class Square extends Pane{
 		}
 		addChessman(pieza);
 		Chessboard.chessboard.board[coords.row][coords.column] = pieza.chessman;
+		Chessboard.chessboard.inCoronation = null;
+		//Agregar quitar coronacion de interfaz
+	}
+	public void Coronar(String equipo) {
+		Chessboard.chessboard.inCoronation = this;
+		GUI.gui.elegirPieza(equipo);
 	}
 	public Square(int color, int i, int j) {
 		/*

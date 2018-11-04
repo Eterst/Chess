@@ -20,6 +20,8 @@ public class Chessboard {
 	public String player2Name;
 	*/
 	
+	public Square inCoronation;
+	
 	public static Chessboard chessboard;
 	
 	public boolean horizontalVerif(boolean included,int fil,int col1, int col2) {

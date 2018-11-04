@@ -3,6 +3,8 @@ package src.application;
 import java.util.Optional;
 
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -33,13 +35,31 @@ import javafx.scene.text.Font;
 //////////////////////////*/
 public class GUI extends Application {
 	
-	public GridPane grid;
+	private GridPane grid;
 	
+	public GridPane getGrid() {
+		return grid;
+	}
+
+	public Label getActualPlayer() {
+		return actualPlayer;
+	}
+
+	public Pane getCoronationPanel() {
+		return coronationPanel;
+	}
+
 	public static ChessmanGUI selection;
 	
 	public static GUI gui;
 	
-	public Label actualPlayer;
+	private Label actualPlayer;
+	
+	private Pane coronationPanel;
+	
+	public ImageView coronationBackground = new ImageView(new Image("bbackground.png"));
+	
+	private AnchorPane root;
 	
 	public void updatePlayer(){
 		if(Chessboard.chessboard.turnWhite) {
@@ -57,8 +77,102 @@ public class GUI extends Application {
 		label.setFont(Font.font(28));
 		return label;
 	}
-	public int elegirPieza(String equipo) {
-		return 1;
+	public void electionInit(String equipo) {
+		if(coronationPanel != null) {
+			coronationPanel.getChildren().clear();
+			coronationPanel = null;
+		}
+		coronationPanel = new Pane();
+		int color;
+		if(equipo == "b") {
+			color = 1;
+		}else if(equipo == "w") {
+			color = 2;
+		}else {
+			color = -1;
+		}
+		GridPane gridp = new GridPane();
+		Square sq1 = new Square(color,0,0);
+		Square sq2 = new Square(color,0,1);
+		Square sq3 = new Square(color,1,0);
+		Square sq4 = new Square(color,1,1);
+		
+		sq1.addChessman(new ChessmanGUI(equipo,"Q",sq1));
+		sq2.addChessman(new ChessmanGUI(equipo,"N",sq1));
+		sq3.addChessman(new ChessmanGUI(equipo,"R",sq1));
+		sq4.addChessman(new ChessmanGUI(equipo,"B",sq1));
+		
+		gridp.addRow(0, sq1);
+		gridp.addRow(0, sq2);
+		gridp.addRow(1, sq3);
+		gridp.addRow(1, sq4);
+		
+		sq1.piece.setOnMouseClicked(null);
+		sq2.piece.setOnMouseClicked(null);
+		sq3.piece.setOnMouseClicked(null);
+		sq4.piece.setOnMouseClicked(null);
+		
+		EventHandler<Event> event = new EventHandler<Event>() {
+			@Override
+			public void handle(Event e) {
+				Square sq = (Square) e.getSource();
+				if(sq.coords.row == 0) {
+					if(sq.coords.column == 0) {
+						if(Chessboard.chessboard.inCoronation != null) {
+							Chessboard.chessboard.inCoronation.Coronar2(equipo, 1);
+							clearCoronation();
+						}
+					}else {
+						if(Chessboard.chessboard.inCoronation != null) {
+							Chessboard.chessboard.inCoronation.Coronar2(equipo, 2);
+							clearCoronation();
+						}
+					}
+				}else {
+					if(sq.coords.column == 0) {
+						if(Chessboard.chessboard.inCoronation != null) {
+							Chessboard.chessboard.inCoronation.Coronar2(equipo, 3);
+							clearCoronation();
+						}
+					}else {
+						if(Chessboard.chessboard.inCoronation != null) {
+							Chessboard.chessboard.inCoronation.Coronar2(equipo, 4);
+							clearCoronation();
+						}
+					}
+				}
+			}
+		};
+		
+		sq1.setOnMouseClicked(event);
+		sq2.setOnMouseClicked(event);
+		sq3.setOnMouseClicked(event);
+		sq4.setOnMouseClicked(event);
+		
+		coronationPanel.getChildren().add(gridp);
+		coronationPanel.setLayoutX(270);
+		coronationPanel.setLayoutY(270);
+	}
+	public void elegirPieza(String equipo) {
+		coronationBackground.setOpacity(0.4);
+		coronationBackground.setFitHeight(640);
+		coronationBackground.setFitWidth(640);
+		coronationBackground.setLayoutX(30);
+		coronationBackground.setLayoutY(30);
+		root.getChildren().add(coronationBackground);
+		
+		Chessboard.chessboard.playable = false;
+		
+		electionInit(equipo);
+		
+		root.getChildren().add(coronationPanel);
+		
+	}
+	public void clearCoronation() {
+		root.getChildren().remove(coronationBackground);
+		root.getChildren().remove(coronationPanel);
+		
+		Chessboard.chessboard.playable = true;
 	}
 	public void fill() {
 		Chessboard.chessboard = new Chessboard();
@@ -186,7 +300,7 @@ public class GUI extends Application {
 		primaryStage.setY(bounds.getMinY());
 		primaryStage.setWidth(bounds.getWidth());
 		primaryStage.setHeight(bounds.getHeight());
-		AnchorPane root = new AnchorPane();
+		root = new AnchorPane();
 		root.setId("pane");
 		
 		ImageView background = new ImageView(new Image("144.png"));
