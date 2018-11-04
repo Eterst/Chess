@@ -56,7 +56,7 @@ public class Pawn extends Chessman{
 				if(Chessboard.chessboard.board[this.coords.row][coords.column].movs == 1) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
 					// Delete of the chessman in the GUI
-					Square temp = (Square) GUI.gui.grid.getChildren().get(coords.column*8+this.coords.row);
+					Square temp = (Square) GUI.gui.getGrid().getChildren().get(coords.column*8+this.coords.row);
 					temp.clearChessman();
 					return true;
 				}
@@ -67,7 +67,7 @@ public class Pawn extends Chessman{
 				if(Chessboard.chessboard.board[this.coords.row][coords.column].movs == 1) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
 					// Delete of the chessman in the GUI
-					Square temp = (Square) GUI.gui.grid.getChildren().get(coords.column*8+this.coords.row);
+					Square temp = (Square) GUI.gui.getGrid().getChildren().get(coords.column*8+this.coords.row);
 					temp.clearChessman();
 					return true;
 				}
