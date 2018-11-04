@@ -52,8 +52,8 @@ public class Pawn extends Chessman{
 		}
 		//Peon al paso //TODO Eliminar la pieza que se va a comer de la interfaz
 		else if(color == 2 && Math.abs(this.coords.column - coords.column) == 1 && coords.row == this.coords.row - 1) {
-			if(this.coords.row == 3 && Chessboard.chessboard.board[this.coords.row][coords.column] != null) {
-				if(Chessboard.chessboard.board[this.coords.row][coords.column].movs == 1) {
+			if(this.coords.row == 3 && Chessboard.chessboard.board[this.coords.row][coords.column] != null ) {
+				if(Chessboard.chessboard.board[this.coords.row][coords.column].movs == 1 ) {
 					Chessboard.chessboard.board[this.coords.row][coords.column] = null;
 					// Delete of the chessman in the GUI
 					Square temp = (Square) GUI.gui.getGrid().getChildren().get(coords.column*8+this.coords.row);
@@ -80,12 +80,14 @@ public class Pawn extends Chessman{
 	public boolean verificarComer(Coords coords) {
 		if(color == 2 && Math.abs(this.coords.column - coords.column) == 1 && coords.row == this.coords.row - 1) {
 			if(Chessboard.chessboard.board[coords.row][coords.column].color == 1) {
+				movs++;
 				return true;
 			}
 		}
 		else if(color == 1 && Math.abs(this.coords.column - coords.column) == 1 && coords.row == this.coords.row + 1) {
 			if(Chessboard.chessboard.board[coords.row][coords.column] != null) {
 				if(Chessboard.chessboard.board[coords.row][coords.column].color == 2) {
+					movs++;
 					return true;
 				}
 			}
