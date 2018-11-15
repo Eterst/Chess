@@ -55,6 +55,8 @@ public class GUI extends Application {
 	
 	private Pane coronationPanel;
 	
+	public Clocks clocks;
+	
 	public ImageView coronationBackground = new ImageView(new Image("bbackground.png"));
 	
 	private AnchorPane root;
@@ -333,6 +335,9 @@ public class GUI extends Application {
 		*/
 		root.setLayoutX((Screen.getPrimary().getBounds().getMaxX()/2)-370);
 		root.setLayoutY((Screen.getPrimary().getBounds().getMaxY()/2)-370);
+		
+		clocks = new Clocks();
+		root.getChildren().add(clocks.pane);
 		
 		
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
