@@ -22,10 +22,12 @@ public class Rook extends Chessman{
 	public boolean verificarMov(Coords destinationCoords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
 		if(coords.column == destinationCoords.column){
 			if(Chessboard.chessboard.verticalVerif(true,coords.column,coords.row,destinationCoords.row)) {
+				movs++;
 				return true;
 			}
 		}else if(coords.row == destinationCoords.row) {
 			if(Chessboard.chessboard.horizontalVerif(true,coords.row, coords.column, destinationCoords.column)) {
+				movs++;
 				return true;
 			}
 		}
@@ -35,10 +37,12 @@ public class Rook extends Chessman{
 	public boolean verificarComer(Coords destinationCoords) {
 		if(coords.column == destinationCoords.column){
 			if(Chessboard.chessboard.verticalVerif(false,coords.column,coords.row,destinationCoords.row)) {
+				movs++;
 				return true;
 			}
 		}else if(coords.row == destinationCoords.row) {
 			if(Chessboard.chessboard.horizontalVerif(false,coords.row, coords.column, destinationCoords.column)) {
+				movs++;
 				return true;
 			}
 		}

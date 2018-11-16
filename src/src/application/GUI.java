@@ -269,22 +269,22 @@ public class GUI extends Application {
 		temp.addChessman(bh4);
 		Chessboard.chessboard.board[7][5] = bh4.chessman;
 		//adding kings
-		temp = (Square) grid.getChildren().get(24);
+		temp = (Square) grid.getChildren().get(32);
 		ChessmanGUI k1 = new ChessmanGUI("b","K",temp);
 		temp.addChessman(k1);
 		Chessboard.chessboard.board[0][3] = k1.chessman;
 		//White
-		temp = (Square) grid.getChildren().get(31);
+		temp = (Square) grid.getChildren().get(39);
 		ChessmanGUI k2 = new ChessmanGUI("w","K",temp);
 		temp.addChessman(k2);
 		Chessboard.chessboard.board[7][3] = k2.chessman;
 		//adding queens
-		temp = (Square) grid.getChildren().get(32);
+		temp = (Square) grid.getChildren().get(24);
 		ChessmanGUI q1 = new ChessmanGUI("b","Q",temp);
 		temp.addChessman(q1);
 		Chessboard.chessboard.board[0][4] = q1.chessman;
 		//White
-		temp = (Square) grid.getChildren().get(39);
+		temp = (Square) grid.getChildren().get(31);
 		ChessmanGUI q2 = new ChessmanGUI("w","Q",temp);
 		temp.addChessman(q2);
 		Chessboard.chessboard.board[7][4] = q2.chessman;

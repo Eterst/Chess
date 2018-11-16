@@ -22,14 +22,17 @@ public class Queen extends Chessman{
 	public boolean verificarMov(Coords coords) {
 		if(this.coords.column == coords.column){
 			if(Chessboard.chessboard.verticalVerif(true,this.coords.column,this.coords.row,coords.row)) {
+				movs++;
 				return true;
 			}
 		}else if(this.coords.row == coords.row) {
 			if(Chessboard.chessboard.horizontalVerif(true,this.coords.row, this.coords.column, coords.column)) {
+				movs++;
 				return true;
 			}
 		}else if(Math.abs(coords.column-this.coords.column) == Math.abs(coords.row-this.coords.row)) {
 			if(Chessboard.chessboard.diagonalVerif(true, this.coords, coords)) {
+				movs++;
 				return true;
 			}
 		}
@@ -39,15 +42,18 @@ public class Queen extends Chessman{
 	public boolean verificarComer(Coords coords) {
 		if(this.coords.column == coords.column){
 			if(Chessboard.chessboard.verticalVerif(false,this.coords.column,this.coords.row,coords.row)) {
+				movs++;
 				return true;
 			}
 		}else if(this.coords.row == coords.row) {
 			if(Chessboard.chessboard.horizontalVerif(false,this.coords.row, this.coords.column, coords.column)) {
+				movs++;
 				return true;
 			}
 		}else if(Math.abs(coords.column-this.coords.column) == Math.abs(coords.row-this.coords.row)) {
 			if(Chessboard.chessboard.diagonalVerif(false, this.coords, coords)) {
 				if(Chessboard.chessboard.board[coords.row][coords.column] != null && Chessboard.chessboard.board[coords.row][coords.column].color != this.color) {
+					movs++;
 					return true;
 				}
 			}

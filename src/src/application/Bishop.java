@@ -22,6 +22,7 @@ public class Bishop extends Chessman{
 	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
 		if(Math.abs(coords.column-this.coords.column) == Math.abs(coords.row-this.coords.row)) {
 			if(Chessboard.chessboard.diagonalVerif(true, this.coords, coords)) {
+				movs++;
 				return true;
 			}
 		}
@@ -32,6 +33,7 @@ public class Bishop extends Chessman{
 		if(Math.abs(coords.column-this.coords.column) == Math.abs(coords.row-this.coords.row)) {
 			if(Chessboard.chessboard.diagonalVerif(false, this.coords, coords)) {
 				if(Chessboard.chessboard.board[coords.row][coords.column] != null && Chessboard.chessboard.board[coords.row][coords.column].color != this.color) {
+					movs++;
 					return true;
 				}
 			}
