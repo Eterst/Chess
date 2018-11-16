@@ -12,12 +12,15 @@ import javafx.stage.StageStyle;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -54,6 +57,12 @@ public class GUI extends Application {
 	private Label actualPlayer;
 	
 	private Pane coronationPanel;
+	
+	private HBox box;
+	
+	private TextField textfield;
+	
+	private Button button;
 	
 	public Clocks clocks;
 	
@@ -339,6 +348,45 @@ public class GUI extends Application {
 		clocks = new Clocks();
 		root.getChildren().add(clocks.pane);
 		
+		
+		box = new HBox();
+		textfield = new TextField();
+		textfield.setPromptText("Digite un Movimiento");
+		textfield.getText();
+		button = new Button("Enviar");
+		
+		EventHandler<Event> event = new EventHandler<Event>() {
+			@Override
+			public void handle(Event e) {
+				if ((textfield.getText() != null && !textfield.getText().isEmpty())) {
+					//Agregar los movimientos
+					if(textfield.getText().length() == 5) {
+						String parts[] = textfield.getText().toLowerCase().split("-");
+						char[] start = parts[0].toCharArray();
+						char[] end = parts[1].toCharArray();
+						int sCol,sFil,eCol,eFil;
+						sCol = ((int) start[0])-97;
+						sFil = 8-(((int) start[1])-48);
+						eCol = ((int) end[0])-97;
+						eFil = 8-(((int) end[1])-48);
+						
+						Coords initial = new Coords(sFil,sCol);
+						Coords ending = new Coords(eFil,eCol);
+						
+					}
+					textfield.clear();  //Limpia despues de enviarlo
+		        }
+			}
+		};
+		button.setOnMouseClicked(event);
+		
+		box.getChildren().add(textfield);
+		box.getChildren().add(button);
+		//textfield.setPrefWidth(100);
+		box.setLayoutX(700);
+		box.setLayoutY(240);
+		
+		root.getChildren().add(box);
 		
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
