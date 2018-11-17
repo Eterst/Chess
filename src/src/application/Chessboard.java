@@ -26,7 +26,7 @@ public class Chessboard {
 	
 	public boolean horizontalVerif(boolean included,int fil,int col1, int col2) {
 		if(included) {
-			horizontalVerif1(fil, col1, col2);
+			return horizontalVerif1(fil, col1, col2);
 		}
 		return horizontalVerif2(fil, col1, col2);
 	}
@@ -172,7 +172,6 @@ public class Chessboard {
 				}else {
 					System.out.print("|"+board[i][j].type);
 				}
-
 			}else {
 				System.out.print("| ");
 			}

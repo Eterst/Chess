@@ -25,7 +25,7 @@ public class King extends Chessman{
 	 
 	@Override
 	public boolean verificarMov(Coords coords) {// TODO Agregar restricciones de movimiento incluyendo los movimientos de comer
-		if((Math.abs(this.coords.row - coords.row) <= 1) & (Math.abs(this.coords.column - coords.column) <= 1)) {
+		if(this.coords !=coords &&(Math.abs(this.coords.row - coords.row) <= 1) & (Math.abs(this.coords.column - coords.column) <= 1)) {
 			if(!reyEnPeligro(coords)) {
 				movs++;
 				return true;

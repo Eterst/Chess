@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -372,6 +373,7 @@ public class GUI extends Application {
 						
 						Coords initial = new Coords(sFil,sCol);
 						Coords ending = new Coords(eFil,eCol);
+						
 						
 					}
 					textfield.clear();  //Limpia despues de enviarlo
