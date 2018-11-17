@@ -24,6 +24,10 @@ public class Square extends Pane{
 	
 	public ImageView square;
 	
+	public ImageView isquare;
+	
+	public boolean iluminated = false;
+	
 	public ChessmanGUI piece;
 	
 	public EventHandler<Event> event;
@@ -47,6 +51,7 @@ public class Square extends Pane{
 		}
 	}
 	public void moveChessman(ChessmanGUI chess) {
+		GUI.gui.Desiluminate();
 		Chessman temp = Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column];
 		Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column] = null;
 		Chessboard.chessboard.board[coords.row][coords.column] = temp;
@@ -80,6 +85,20 @@ public class Square extends Pane{
 		Chessboard.chessboard.inCoronation = this;
 		GUI.gui.elegirPieza(equipo);
 	}
+	public void Iluminar() {
+		if(!iluminated) {
+			getChildren().remove(square);
+			getChildren().add(isquare);
+			iluminated = true;
+		}
+	}
+	public void Desiluminar() {
+		if(iluminated) {
+			getChildren().remove(isquare);
+			getChildren().add(square);
+			iluminated = false;
+		}
+	}
 	public void textMove() {
 		if(GUI.selection != null && Chessboard.chessboard.playable) {
 			if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
@@ -106,6 +125,7 @@ public class Square extends Pane{
 			System.out.println("Your clicked a square");
 		}
 	}
+	
 	public Square(int color, int i, int j) {
 		/*
 		row = i;
@@ -114,8 +134,10 @@ public class Square extends Pane{
 		coords = new Coords(i,j);
 		if(color % 2 == 1) {
 			square = new ImageView(new Image("white.png"));
+			isquare = new ImageView(new Image("iwhite.png"));
 		}else if(color % 2 == 0) {
 			square = new ImageView(new Image("green.png"));
+			isquare = new ImageView(new Image("igreen.png"));
 		}
 		square.setFitHeight(80);
 		square.setFitWidth(80);

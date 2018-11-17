@@ -184,6 +184,32 @@ public class GUI extends Application {
 		
 		Chessboard.chessboard.playable = true;
 	}
+	public void diagonalIluminate(Coords coords) {
+		//((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		Chessman[][] board = Chessboard.chessboard.board;
+		for(int i = coords.row+1,j = coords.column+1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i++,j++) {
+			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		}
+		for(int i = coords.row+1,j = coords.column-1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i++,j--) {
+			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		}
+		for(int i = coords.row-1,j = coords.column-1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i--,j--) {
+			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		}
+		
+		for(int i = coords.row-1,j = coords.column+1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i--,j++) {
+			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		}
+	}
+	public void Desiluminate() {
+		//((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		Chessman[][] board = Chessboard.chessboard.board;
+		for(int i = 0;i<8;i++) {
+			for(int j = 0;j<8;j++) {
+				((Square) grid.getChildren().get(j*8+i)).Desiluminar();
+			}
+		}
+	}
 	public void fill() {
 		Chessboard.chessboard = new Chessboard();
 		//adding Squares

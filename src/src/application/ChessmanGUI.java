@@ -104,6 +104,10 @@ public class ChessmanGUI extends Pane{
 				if(confirmSelect() && Chessboard.chessboard.playable) {
 					System.out.println("Selected!");
 					select();
+					GUI.gui.Desiluminate();
+					if(chessman.type == "B") {
+						GUI.gui.diagonalIluminate(chessman.coords);
+					}
 				}
 				System.out.println("Fil = "+chessman.coords.row+" Col: "+chessman.coords.column);
 				System.out.println("Your clicked a Piece");
