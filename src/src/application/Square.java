@@ -80,6 +80,32 @@ public class Square extends Pane{
 		Chessboard.chessboard.inCoronation = this;
 		GUI.gui.elegirPieza(equipo);
 	}
+	public void textMove() {
+		if(GUI.selection != null && Chessboard.chessboard.playable) {
+			if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
+				moveChessman(GUI.selection);
+				if(GUI.selection.chessman.type.compareTo("P") == 0) {
+					if(GUI.selection.chessman.coords.row == 7) {//TODO En fase de pruebas 
+						Coronar("b");
+					}
+					else if(GUI.selection.chessman.coords.row == 0) {
+						Coronar("w");
+					}
+				}
+				GUI.selection = null;
+				System.out.println("Antes: "+Chessboard.chessboard.turnWhite);
+				if(Chessboard.chessboard.turnWhite) {
+					Chessboard.chessboard.turnWhite = false;
+				}else if(!Chessboard.chessboard.turnWhite) {
+					Chessboard.chessboard.turnWhite = true;
+				}
+				System.out.println("Despues: "+Chessboard.chessboard.turnWhite);
+				GUI.gui.updatePlayer();
+			}
+			System.out.println("Fil = "+coords.row+" Col: "+coords.column);
+			System.out.println("Your clicked a square");
+		}
+	}
 	public Square(int color, int i, int j) {
 		/*
 		row = i;

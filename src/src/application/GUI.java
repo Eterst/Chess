@@ -381,6 +381,16 @@ public class GUI extends Application {
 						
 						Coords initial = new Coords(sFil,sCol);
 						Coords ending = new Coords(eFil,eCol);
+						if(Chessboard.chessboard.board[sFil][sCol] != null && Chessboard.chessboard.board[eFil][eCol] == null && Chessboard.chessboard.playable) {
+							Square sSquare = (Square) grid.getChildren().get(sCol*8+sFil);
+							Square eSquare = (Square) grid.getChildren().get(eCol*8+eFil);
+							
+							if(sSquare.piece.confirmSelect()) {
+								System.out.println("Selected!");
+								sSquare.piece.select();
+							}
+							eSquare.textMove();
+						}
 						
 						textfield.clear();  //Limpia despues de enviarlo
 					}else if(textfield.getText().length() == 3) {
@@ -390,7 +400,22 @@ public class GUI extends Application {
 						char start = tstart[0];
 						char end = tend[0];
 						if(start == 'o' && end == 'o') {
-							textfield.setText("Enroque alv");
+							Square king;
+							Square eSquare;
+							if(Chessboard.chessboard.turnWhite) {
+								king = (Square) grid.getChildren().get(28);
+								eSquare = (Square) grid.getChildren().get(48);
+							}else {
+								king = (Square) grid.getChildren().get(35);
+								eSquare = (Square) grid.getChildren().get(55);
+							}
+							//if((king.piece != null && eSquare.piece == null) && king.piece.chessman.type == "K") {
+								if(king.piece.confirmSelect()) {
+									System.out.println("Selected!");
+									king.piece.select();
+								}
+								eSquare.textMove();
+							//}
 						}else {
 							textfield.clear();  //Limpia despues de enviarlo
 						}
