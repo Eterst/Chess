@@ -42,7 +42,9 @@ public class Square extends Pane{
 		chess.square = this;
 		getChildren().remove(piece);
 		piece = chess;
-		getChildren().add(piece);
+		if(!getChildren().contains(piece)) {
+			getChildren().add(piece);
+		}
 	}
 	public void moveChessman(ChessmanGUI chess) {
 		Chessman temp = Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column];

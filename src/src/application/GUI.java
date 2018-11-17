@@ -65,7 +65,7 @@ public class GUI extends Application {
 	
 	private Button button;
 	
-	public Clocks clocks;
+	//public Clocks clocks;
 	
 	public ImageView coronationBackground = new ImageView(new Image("bbackground.png"));
 	
@@ -282,22 +282,22 @@ public class GUI extends Application {
 		temp = (Square) grid.getChildren().get(32);
 		ChessmanGUI k1 = new ChessmanGUI("b","K",temp);
 		temp.addChessman(k1);
-		Chessboard.chessboard.board[0][3] = k1.chessman;
+		Chessboard.chessboard.board[0][4] = k1.chessman;
 		//White
 		temp = (Square) grid.getChildren().get(39);
 		ChessmanGUI k2 = new ChessmanGUI("w","K",temp);
 		temp.addChessman(k2);
-		Chessboard.chessboard.board[7][3] = k2.chessman;
+		Chessboard.chessboard.board[7][4] = k2.chessman;
 		//adding queens
 		temp = (Square) grid.getChildren().get(24);
 		ChessmanGUI q1 = new ChessmanGUI("b","Q",temp);
 		temp.addChessman(q1);
-		Chessboard.chessboard.board[0][4] = q1.chessman;
+		Chessboard.chessboard.board[0][3] = q1.chessman;
 		//White
 		temp = (Square) grid.getChildren().get(31);
 		ChessmanGUI q2 = new ChessmanGUI("w","Q",temp);
 		temp.addChessman(q2);
-		Chessboard.chessboard.board[7][4] = q2.chessman;
+		Chessboard.chessboard.board[7][3] = q2.chessman;
 	}
 	
 	@Override
@@ -346,9 +346,9 @@ public class GUI extends Application {
 		root.setLayoutX((Screen.getPrimary().getBounds().getMaxX()/2)-370);
 		root.setLayoutY((Screen.getPrimary().getBounds().getMaxY()/2)-370);
 		
-		clocks = new Clocks();
+		/*clocks = new Clocks(); // TODO RELOJ ARREGLAR
 		root.getChildren().add(clocks.pane);
-		
+		*/
 		
 		box = new HBox();
 		textfield = new TextField();
@@ -374,9 +374,20 @@ public class GUI extends Application {
 						Coords initial = new Coords(sFil,sCol);
 						Coords ending = new Coords(eFil,eCol);
 						
+						textfield.clear();  //Limpia despues de enviarlo
+					}else if(textfield.getText().length() == 3) {
+						String parts[] = textfield.getText().toLowerCase().split("-");
+						char[] tstart = parts[0].toCharArray();
+						char[] tend = parts[1].toCharArray();
+						char start = tstart[0];
+						char end = tend[0];
+						if(start == 'o' && end == 'o') {
+							textfield.setText("Enroque alv");
+						}else {
+							textfield.clear();  //Limpia despues de enviarlo
+						}
 						
 					}
-					textfield.clear();  //Limpia despues de enviarlo
 		        }
 			}
 		};
@@ -389,6 +400,7 @@ public class GUI extends Application {
 		box.setLayoutY(240);
 		
 		root.getChildren().add(box);
+		
 		
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
