@@ -407,7 +407,7 @@ public class GUI extends Application {
 						
 						Coords initial = new Coords(sFil,sCol);
 						Coords ending = new Coords(eFil,eCol);
-						if(Chessboard.chessboard.board[sFil][sCol] != null && Chessboard.chessboard.board[eFil][eCol] == null && Chessboard.chessboard.playable) {
+						if(Chessboard.chessboard.board[sFil][sCol] != null && Chessboard.chessboard.playable) {
 							Square sSquare = (Square) grid.getChildren().get(sCol*8+sFil);
 							Square eSquare = (Square) grid.getChildren().get(eCol*8+eFil);
 							
