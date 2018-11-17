@@ -40,17 +40,17 @@ public class Queen extends Chessman{
 	}
 	@Override
 	public boolean verificarComer(Coords coords) {
-		if(this.coords.column == coords.column){
+		if(this.coords != coords && this.coords.column == coords.column){
 			if(Chessboard.chessboard.verticalVerif(false,this.coords.column,this.coords.row,coords.row)) {
 				movs++;
 				return true;
 			}
-		}else if(this.coords.row == coords.row) {
+		}else if(this.coords != coords && this.coords.row == coords.row) {
 			if(Chessboard.chessboard.horizontalVerif(false,this.coords.row, this.coords.column, coords.column)) {
 				movs++;
 				return true;
 			}
-		}else if(Math.abs(coords.column-this.coords.column) == Math.abs(coords.row-this.coords.row)) {
+		}else if(this.coords != coords && Math.abs(coords.column-this.coords.column) == Math.abs(coords.row-this.coords.row)) {
 			if(Chessboard.chessboard.diagonalVerif(false, this.coords, coords)) {
 				if(Chessboard.chessboard.board[coords.row][coords.column] != null && Chessboard.chessboard.board[coords.row][coords.column].color != this.color) {
 					movs++;
