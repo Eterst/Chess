@@ -327,6 +327,14 @@ public class GUI extends Application {
 		actualPlayer.setText("Turn of White's");
 		root.getChildren().add(actualPlayer);
 		
+		Label indice1 = CreateLabel(30,670);
+		indice1.setText("    a         b        c         d        e         f         g        h");
+		root.getChildren().add(indice1);
+		Label indice2 = CreateLabel(0,50);
+		indice2.setText("8\n\n7\n\n6\n\n5\n\n4\n\n3\n\n2\n\n1");
+		indice2.getStyleClass().add("application");
+		root.getChildren().add(indice2);
+		
 		Scene scene = new Scene(root,Screen.getPrimary().getBounds().getMaxY(),Screen.getPrimary().getBounds().getMaxY());
 		
 		//Cosas xd
