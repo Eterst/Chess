@@ -58,6 +58,7 @@ public class Pawn extends Chessman{
 					// Delete of the chessman in the GUI
 					Square temp = (Square) GUI.gui.getGrid().getChildren().get(coords.column*8+this.coords.row);
 					temp.clearChessman();
+					movs++;
 					return true;
 				}
 			}
@@ -69,6 +70,7 @@ public class Pawn extends Chessman{
 					// Delete of the chessman in the GUI
 					Square temp = (Square) GUI.gui.getGrid().getChildren().get(coords.column*8+this.coords.row);
 					temp.clearChessman();
+					movs++;
 					return true;
 				}
 			}

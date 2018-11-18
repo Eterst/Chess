@@ -7,7 +7,7 @@ package src.application;
 /* Trabajando Ahora: None
 /* Fecha inicio: 
 /* Fecha terminado: 
-//////////////////////////*/
+/////////////////////////*/
 public class Bishop extends Chessman{
 	public Bishop(String color) {
 		if(color == "b") {

@@ -22,9 +22,11 @@ public class Square extends Pane{
 	*/
 	public Coords coords;
 	
-	public ImageView square;
+	private ImageView square;
 	
-	public ImageView isquare;
+	private ImageView isquare;
+	
+	private ImageView rsquare;
 	
 	public boolean iluminated = false;
 	
@@ -96,10 +98,21 @@ public class Square extends Pane{
 			iluminated = true;
 		}
 	}
+	public void IluminarRed() {
+		if(!iluminated) {
+			getChildren().clear();
+			getChildren().add(rsquare);
+			getChildren().add(piece);
+			iluminated = true;
+		}
+	}
 	public void Desiluminar() {
 		if(iluminated) {
-			getChildren().remove(isquare);
+			getChildren().clear();
 			getChildren().add(square);
+			if(piece != null) {
+				getChildren().add(piece);
+			}
 			iluminated = false;
 		}
 	}
@@ -157,9 +170,11 @@ public class Square extends Pane{
 		if(color % 2 == 1) {
 			square = new ImageView(new Image("white.png"));
 			isquare = new ImageView(new Image("iwhite.png"));
+			rsquare = new ImageView(new Image("rwhite.png"));
 		}else if(color % 2 == 0) {
 			square = new ImageView(new Image("green.png"));
 			isquare = new ImageView(new Image("igreen.png"));
+			rsquare = new ImageView(new Image("rgreen.png"));
 		}
 		square.setFitHeight(80);
 		square.setFitWidth(80);

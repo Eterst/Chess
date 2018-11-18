@@ -184,21 +184,247 @@ public class GUI extends Application {
 		
 		Chessboard.chessboard.playable = true;
 	}
-	public void diagonalIluminate(Coords coords) {
+	public void IluminateSquare(Chessman chessman) {
+		Chessman[][] board = Chessboard.chessboard.board;
+		if(chessman.type == "P") {
+			int i = chessman.coords.row;
+			int j = chessman.coords.column;
+			if(chessman.color == 2) {
+				if(chessman.movs == 0) {
+					if(board[i-2][j] == null) {
+						((Square) grid.getChildren().get(j*8+i-2)).Iluminar();
+					}else {
+						if(board[i-2][j].color != board[i][j].color) {
+							((Square) grid.getChildren().get(j*8+i-2)).IluminarRed();
+						}
+					}
+				}
+				if(board[i-1][j] == null) {
+					((Square) grid.getChildren().get(j*8+i-1)).Iluminar();
+				}
+				if(board[i-1][j-1] != null && board[i-1][j-1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j-1)*8+i-1)).IluminarRed();
+				}
+				if(board[i-1][j+1] != null && board[i-1][j+1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j+1)*8+i-1)).IluminarRed();
+				}
+				if(i == 3 && board[i][j-1] != null && board[i][j-1].movs == 1) {
+					((Square) grid.getChildren().get((j-1)*8+i-1)).IluminarRed();
+				}
+				if(i == 3 && board[i][j+1] != null && board[i][j+1].movs == 1) {
+					((Square) grid.getChildren().get((j+1)*8+i-1)).IluminarRed();
+				}
+			}else {
+				if(chessman.movs == 0) {
+					if(board[i+2][j] == null) {
+						((Square) grid.getChildren().get(j*8+i+2)).Iluminar();
+					}else {
+						if(board[i+2][j].color != board[i][j].color) {
+							((Square) grid.getChildren().get(j*8+i+2)).IluminarRed();
+						}
+					}
+				}
+				if(board[i+1][j] == null) {
+					((Square) grid.getChildren().get(j*8+i+1)).Iluminar();
+				}
+				if(board[i+1][j+1] != null && board[i+1][j+1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j+1)*8+i+1)).IluminarRed();
+				}
+				if(board[i+1][j-1] != null && board[i+1][j-1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j-1)*8+i+1)).IluminarRed();
+				}
+				if(i == 4 && board[i][j+1] != null && board[i][j+1].movs == 1) {
+					((Square) grid.getChildren().get((j+1)*8+i+1)).IluminarRed();
+				}
+				if(i == 4 && board[i][j-1] != null && board[i][j-1].movs == 1) {
+					((Square) grid.getChildren().get((j-1)*8+i+1)).IluminarRed();
+				}
+			}
+		}
+		else if(chessman.type == "B") {
+			diagonalIluminate(chessman.coords);
+		}else if(chessman.type == "K") {
+			for(int i = chessman.coords.row-1;i<=chessman.coords.row+1;i++) {
+				for(int j = chessman.coords.column-1;j<=chessman.coords.column+1;j++) {
+					if(board[i][j] == null) {
+						((Square) grid.getChildren().get(j*8+i)).Iluminar();
+					}else {
+						if(board[i][j].color != board[chessman.coords.row][chessman.coords.column].color) {
+							((Square) grid.getChildren().get(j*8+i)).IluminarRed();
+						}
+					}
+				}
+			}
+		}else if(chessman.type == "N") {
+			int i = chessman.coords.row;
+			int j = chessman.coords.column;
+			if((i-2>= 0 && j-1>=0 ) && board[i-2][j-1] == null) {
+				((Square) grid.getChildren().get((j-1)*8+i-2)).Iluminar();
+			}else if(i-2>= 0 && j-1>=0){
+				if(board[i-2][j-1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j-1)*8+i-2)).IluminarRed();
+				}
+			}
+			if((i-2>= 0 && j+1<8) && board[i-2][j+1] == null) {
+				((Square) grid.getChildren().get((j+1)*8+i-2)).Iluminar();
+			}else if(i-2>= 0 && j+1<8){
+				if(board[i-2][j+1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j+1)*8+i-2)).IluminarRed();
+				}
+			}
+			
+			
+			if((i-1>= 0 && j-2>=0) &&board[i-1][j-2] == null) {
+				((Square) grid.getChildren().get((j-2)*8+i-1)).Iluminar();
+			}else if(i-1>= 0 && j-2>=0){
+				if(board[i-1][j-2].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j-2)*8+i-1)).IluminarRed();
+				}
+			}
+			if((i+1<8 && j-2>=0) && board[i+1][j-2] == null) {
+				((Square) grid.getChildren().get((j-2)*8+i+1)).Iluminar();
+			}else if(i+1<8 && j-2>=0){
+				if(board[i+1][j-2].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j-2)*8+i+1)).IluminarRed();
+				}
+			}
+			
+
+			if((i+2< 8 && j-1>=0) && board[i+2][j-1] == null) {
+				((Square) grid.getChildren().get((j-1)*8+i+2)).Iluminar();
+			}else if(i+2< 8 && j-1>=0){
+				if(board[i+2][j-1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j-1)*8+i+2)).IluminarRed();
+				}
+			}
+			if((i+2< 8 && j+1<8) && board[i+2][j+1] == null) {
+				((Square) grid.getChildren().get((j+1)*8+i+2)).Iluminar();
+			}else if(i+2< 8 && j+1<8){
+				if(board[i+2][j+1].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j+1)*8+i+2)).IluminarRed();
+				}
+			}
+			
+			
+			if((i-1>= 0 && j+2<8) && board[i-1][j+2] == null) {
+				((Square) grid.getChildren().get((j+2)*8+i-1)).Iluminar();
+			}else if(i-1>= 0 && j+2<8){
+				if(board[i-1][j+2].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j+2)*8+i-1)).IluminarRed();
+				}
+			}
+			if((i+1< 8 && j+2<8) && board[i+1][j+2] == null) {
+				((Square) grid.getChildren().get((j+2)*8+i+1)).Iluminar();
+			}else if(i+1< 8 && j+2<8){
+				if(board[i+1][j+2].color != board[i][j].color) {
+					((Square) grid.getChildren().get((j+2)*8+i+1)).IluminarRed();
+				}
+			}
+		}else if(chessman.type == "Q") {
+			diagonalIluminate(chessman.coords);
+			verticalIluminate(chessman.coords);
+			horizontalIluminate(chessman.coords);
+		}else if(chessman.type == "R") {
+			verticalIluminate(chessman.coords);
+			horizontalIluminate(chessman.coords);
+		}
+	}
+	private void diagonalIluminate(Coords coords) {
 		//((Square) grid.getChildren().get(j*8+i)).Iluminar();
 		Chessman[][] board = Chessboard.chessboard.board;
-		for(int i = coords.row+1,j = coords.column+1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i++,j++) {
-			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		boolean band = true;
+		for(int i = coords.row+1,j = coords.column+1;(band && (i >= 0 && i<8) && (j>=0 && j<8));i++,j++) {
+			if(board[i][j] == null) {
+				((Square) grid.getChildren().get(j*8+i)).Iluminar();
+			}else {
+				if(board[i][j].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(j*8+i)).IluminarRed();
+				}
+				band = false;
+			}
 		}
-		for(int i = coords.row+1,j = coords.column-1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i++,j--) {
-			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		band = true;
+		for(int i = coords.row+1,j = coords.column-1;(band && (i >= 0 && i<8) && (j>=0 && j<8));i++,j--) {
+			if(board[i][j] == null) {
+				((Square) grid.getChildren().get(j*8+i)).Iluminar();
+			}else {
+				if(board[i][j].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(j*8+i)).IluminarRed();
+				}
+				band = false;
+			}
 		}
-		for(int i = coords.row-1,j = coords.column-1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i--,j--) {
-			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		band = true;
+		for(int i = coords.row-1,j = coords.column-1;(band && (i >= 0 && i<8) && (j>=0 && j<8));i--,j--) {
+			if(board[i][j] == null) {
+				((Square) grid.getChildren().get(j*8+i)).Iluminar();
+			}else {
+				if(board[i][j].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(j*8+i)).IluminarRed();
+				}
+				band = false;
+			}
 		}
-		
-		for(int i = coords.row-1,j = coords.column+1;((i >= 0 && i<8) && (j>=0 && j<8) && board[i][j] == null);i--,j++) {
-			((Square) grid.getChildren().get(j*8+i)).Iluminar();
+		band = true;
+		for(int i = coords.row-1,j = coords.column+1;(band && (i >= 0 && i<8) && (j>=0 && j<8));i--,j++) {
+			if(board[i][j] == null) {
+				((Square) grid.getChildren().get(j*8+i)).Iluminar();
+			}else {
+				if(board[i][j].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(j*8+i)).IluminarRed();
+				}
+				band = false;
+			}
+		}
+	}
+	private void horizontalIluminate(Coords coords) {
+		Chessman[][] board = Chessboard.chessboard.board;
+		boolean band = true;
+		for(int i = coords.column+1;(i<8 && band);i++) {
+			if(board[coords.row][i] == null) {
+				((Square) grid.getChildren().get(i*8+coords.row)).Iluminar();
+			}else {
+				if(board[coords.row][i].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(i*8+coords.row)).IluminarRed();
+				}
+				band = false;
+			}
+		}
+		band = true;
+		for(int i = coords.column-1;(i>=0 && band);i--) {
+			if(board[coords.row][i] == null) {
+				((Square) grid.getChildren().get(i*8+coords.row)).Iluminar();
+			}else {
+				if(board[coords.row][i].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(i*8+coords.row)).IluminarRed();
+				}
+				band = false;
+			}
+		}
+	}
+	private void verticalIluminate(Coords coords) {
+		Chessman[][] board = Chessboard.chessboard.board;
+		boolean band = true;
+		for(int i = coords.row+1;(i<8 && band);i++) {
+			if(board[i][coords.column] == null) {
+				((Square) grid.getChildren().get(coords.column*8+i)).Iluminar();
+			}else {
+				if(board[i][coords.column].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(coords.column*8+i)).IluminarRed();
+				}
+				band = false;
+			}
+		}
+		band = true;
+		for(int i = coords.row-1;(i>=0 && band);i--) {
+			if(board[i][coords.column] == null) {
+				((Square) grid.getChildren().get(coords.column*8+i)).Iluminar();
+			}else {
+				if(board[i][coords.column].color != board[coords.row][coords.column].color) {
+					((Square) grid.getChildren().get(coords.column*8+i)).IluminarRed();
+				}
+				band = false;
+			}
 		}
 	}
 	public void Desiluminate() {
