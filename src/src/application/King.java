@@ -53,7 +53,9 @@ public class King extends Chessman{
 					if(Chessboard.chessboard.board[0][0] != null && Chessboard.chessboard.board[0][0].type == "R" && Chessboard.chessboard.board[0][0].movs == 0) {
 						Square cuadro = (Square) GUI.gui.getGrid().getChildren().get(24);
 						Square pieza = (Square) GUI.gui.getGrid().getChildren().get(0);
+						pieza.piece.chessman.quitarAmenaza();//Quita la amenaza de la torre
 						cuadro.moveChessman(pieza.piece);
+						cuadro.piece.chessman.amenazar();//Pone la amenaza de la torre
 						movs++;
 						return true;
 					}
@@ -62,7 +64,9 @@ public class King extends Chessman{
 					if(Chessboard.chessboard.board[0][7] != null && Chessboard.chessboard.board[0][7].type == "R" && Chessboard.chessboard.board[0][7].movs == 0) {
 						Square cuadro = (Square) GUI.gui.getGrid().getChildren().get(40);
 						Square pieza = (Square) GUI.gui.getGrid().getChildren().get(56);
+						pieza.piece.chessman.quitarAmenaza();//Quita la amenaza de la torre
 						cuadro.moveChessman(pieza.piece);
+						cuadro.piece.chessman.amenazar();//Pone la amenaza de la torre
 						movs++;
 						return true;
 					}
@@ -73,7 +77,9 @@ public class King extends Chessman{
 					if(Chessboard.chessboard.board[7][0] != null && Chessboard.chessboard.board[7][0].type == "R" && Chessboard.chessboard.board[7][0].movs == 0) {
 						Square cuadro = (Square) GUI.gui.getGrid().getChildren().get(31);
 						Square pieza = (Square) GUI.gui.getGrid().getChildren().get(7);
+						pieza.piece.chessman.quitarAmenaza();//Quita la amenaza de la torre
 						cuadro.moveChessman(pieza.piece);
+						cuadro.piece.chessman.amenazar();//Pone la amenaza de la torre
 						movs++;
 						return true;
 					}
@@ -82,7 +88,9 @@ public class King extends Chessman{
 					if(Chessboard.chessboard.board[7][7] != null && Chessboard.chessboard.board[7][7].type == "R" && Chessboard.chessboard.board[7][7].movs == 0) {
 						Square cuadro = (Square) GUI.gui.getGrid().getChildren().get(47);
 						Square pieza = (Square) GUI.gui.getGrid().getChildren().get(63);
+						pieza.piece.chessman.quitarAmenaza();//Quita la amenaza de la torre
 						cuadro.moveChessman(pieza.piece);
+						cuadro.piece.chessman.amenazar();//Pone la amenaza de la torre
 						movs++;
 						return true;
 					}

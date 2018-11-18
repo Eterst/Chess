@@ -169,6 +169,7 @@ public class Square extends Pane{
 			public void handle(Event e) {
 				if(GUI.selection != null && Chessboard.chessboard.playable) {
 					if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
+						GUI.selection.chessman.quitarAmenaza();//Quita la amenaza antes de mover la pieza 
 						moveChessman(GUI.selection);
 						if(GUI.selection.chessman.type.compareTo("P") == 0) {
 							if(GUI.selection.chessman.coords.row == 7) {//TODO En fase de pruebas 
@@ -187,6 +188,7 @@ public class Square extends Pane{
 						}
 						System.out.println("Despues: "+Chessboard.chessboard.turnWhite);
 						GUI.gui.updatePlayer();
+						piece.chessman.amenazar();//Coloca la amenaza despues de mover la pieza
 					}
 					System.out.println("Fil = "+coords.row+" Col: "+coords.column);
 					System.out.println("Your clicked a square");
