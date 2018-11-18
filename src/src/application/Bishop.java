@@ -47,35 +47,35 @@ public class Bishop extends Chessman{
 		int i = 0;
 		//Noreste
 		i = 1;
-		numSquare = (coords.column-i)*8+(coords.row+i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column-i)+8*(coords.row+i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column-i >= 0 && coords.row+i <= 7) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).sumarAmenaza(color);
 			i++;
-			numSquare = (coords.column-i)*8+(coords.row+i);
+			numSquare = (coords.column-i)+8*(coords.row+i);
 		}
 		//Sureste
 		i = 1;
-		numSquare = (coords.column+i)*8+(coords.row+i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column+i)+8*(coords.row+i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column+i <= 7 && coords.row+i <= 7) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).sumarAmenaza(color);
 			i++;
-			numSquare = (coords.column+i)*8+(coords.row+i);
+			numSquare = (coords.column+i)+8*(coords.row+i);
 		}
 		//Suroeste
 		i = 1;
-		numSquare = (coords.column+i)*8+(coords.row-i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column+i)+8*(coords.row-i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column+i <= 7 && coords.row-i >= 0) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).sumarAmenaza(color);
 			i++;
-			numSquare = (coords.column+i)*8+(coords.row-i);
+			numSquare = (coords.column+i)+8*(coords.row-i);
 		}
 		//Noroeste
 		i = 1;
-		numSquare = (coords.column-i)*8+(coords.row-i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column-i)+8*(coords.row-i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column-i >= 0 && coords.row-i >= 0) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).sumarAmenaza(color);
 			i++;
-			numSquare = (coords.column-i)*8+(coords.row-i);
+			numSquare = (coords.column-i)+8*(coords.row-i);
 		}
 	}
 	@Override
@@ -84,35 +84,35 @@ public class Bishop extends Chessman{
 		int i = 0;
 		//Noreste
 		i = 1;
-		numSquare = (coords.column-i)*8+(coords.row+i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column-i)+8*(coords.row+i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column-i >= 0 && coords.row+i <= 7) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).restarAmenaza(color);
 			i++;
-			numSquare = (coords.column-i)*8+(coords.row+i);
+			numSquare = (coords.column-i)+8*(coords.row+i);
 		}
 		//Sureste
 		i = 1;
-		numSquare = (coords.column+i)*8+(coords.row+i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column+i)+8*(coords.row+i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column+i <= 7 && coords.row+i <= 7) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).restarAmenaza(color);
 			i++;
-			numSquare = (coords.column+i)*8+(coords.row+i);
+			numSquare = (coords.column+i)+8*(coords.row+i);
 		}
 		//Suroeste
 		i = 1;
-		numSquare = (coords.column+i)*8+(coords.row-i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column+i)+8*(coords.row-i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column+i <= 7 && coords.row-i >= 0) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).restarAmenaza(color);
 			i++;
-			numSquare = (coords.column+i)*8+(coords.row-i);
+			numSquare = (coords.column+i)+8*(coords.row-i);
 		}
 		//Noroeste
 		i = 1;
-		numSquare = (coords.column-i)*8+(coords.row-i);
-		while(numSquare >= 0 && numSquare <= 63) {
+		numSquare = (coords.column-i)+8*(coords.row-i);
+		while(numSquare >= 0 && numSquare <= 63 && coords.column-i >= 0 && coords.row-i >= 0) {
 			((Square) GUI.gui.getGrid().getChildren().get(numSquare)).restarAmenaza(color);
 			i++;
-			numSquare = (coords.column-i)*8+(coords.row-i);
+			numSquare = (coords.column-i)+8*(coords.row-i);
 		}
 	}
 }

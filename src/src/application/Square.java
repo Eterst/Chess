@@ -30,9 +30,9 @@ public class Square extends Pane{
 	
 	public ChessmanGUI piece;
 	
-	public int amenazaNegra;
+	public int amenazaNegra = 0;
 	
-	public int amenazaBlanca;
+	public int amenazaBlanca = 0;
 	
 	public EventHandler<Event> event;
 	
