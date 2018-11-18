@@ -244,11 +244,11 @@ public class GUI extends Application {
 		else if(chessman.type == "B") {
 			diagonalIluminate(chessman.coords);
 		}else if(chessman.type == "K") {
-			for(int i = chessman.coords.row-1;i<=chessman.coords.row+1;i++) {
+			for(int i = chessman.coords.row-1;(i<=chessman.coords.row+1);i++) {
 				for(int j = chessman.coords.column-1;j<=chessman.coords.column+1;j++) {
-					if(board[i][j] == null) {
+					if((i>=0 && i<8) && (j>=0 && j<8) && board[i][j] == null) {
 						((Square) grid.getChildren().get(j*8+i)).Iluminar();
-					}else {
+					}else if((i>=0 && i<8) && (j>=0 && j<8)){
 						if(board[i][j].color != board[chessman.coords.row][chessman.coords.column].color) {
 							((Square) grid.getChildren().get(j*8+i)).IluminarRed();
 						}
