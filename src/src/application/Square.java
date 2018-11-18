@@ -30,6 +30,10 @@ public class Square extends Pane{
 	
 	public ChessmanGUI piece;
 	
+	public int amenazaNegra;
+	
+	public int amenazaBlanca;
+	
 	public EventHandler<Event> event;
 	
 	public void clearChessman() {
@@ -123,6 +127,24 @@ public class Square extends Pane{
 			}
 			System.out.println("Fil = "+coords.row+" Col: "+coords.column);
 			System.out.println("Your clicked a square");
+		}
+	}
+	
+	public void sumarAmenaza(int color) {
+		if(color == 1) {
+			++amenazaNegra;
+		}
+		else if(color == 2) {
+			++amenazaBlanca;
+		}
+	}
+	
+	public void restarAmenaza(int color) {
+		if(color == 1) {
+			--amenazaNegra;
+		}
+		else if(color == 2) {
+			--amenazaBlanca;
 		}
 	}
 	

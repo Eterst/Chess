@@ -19,6 +19,10 @@ public class King extends Chessman{
 		coords = new Coords();
 	}
 	
+	/**
+	 *  @brief Si el rey esta en una casilla amenazada revisa si es una amenaza real o "por rayos x" si es una amenaza real retorna true y false si no lo amenazan directamente o si no esta en una casilla amenazada 
+	 *  @param Coords
+	 */
 	public boolean reyEnPeligro(Coords coords) {
 		return false;
 	}
@@ -80,4 +84,44 @@ public class King extends Chessman{
 	public boolean verificarComer(Coords coords) {
 		return verificarMov(coords);
 	}
+	
+	@Override
+	public void amenazar() {
+		//Norte
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column-1)*8+coords.row)).sumarAmenaza(color); 
+		//Sur
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column+1)*8+coords.row)).sumarAmenaza(color); 
+		//Oeste
+		((Square) GUI.gui.getGrid().getChildren().get(coords.column*8+(coords.row-1))).sumarAmenaza(color);
+		//Este
+		((Square) GUI.gui.getGrid().getChildren().get(coords.column*8+(coords.row+1))).sumarAmenaza(color);
+		//Noreste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column-1)*8+(coords.row+1))).sumarAmenaza(color);
+		//Sureste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column+1)*8+(coords.row+1))).sumarAmenaza(color);
+		//Suroeste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column+1)*8+(coords.row-1))).sumarAmenaza(color);
+		//Noroeste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column-1)*8+(coords.row-1))).sumarAmenaza(color);
+	}
+	@Override
+	public void quitarAmenaza() {
+		//Norte
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column-1)*8+coords.row)).restarAmenaza(color); 
+		//Sur
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column+1)*8+coords.row)).restarAmenaza(color);
+		//Oeste
+		((Square) GUI.gui.getGrid().getChildren().get(coords.column*8+(coords.row-1))).restarAmenaza(color);
+		//Este
+		((Square) GUI.gui.getGrid().getChildren().get(coords.column*8+(coords.row+1))).restarAmenaza(color);
+		//Noreste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column-1)*8+(coords.row+1))).restarAmenaza(color);
+		//Sureste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column+1)*8+(coords.row+1))).restarAmenaza(color);
+		//Suroeste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column+1)*8+(coords.row-1))).restarAmenaza(color);
+		//Noroeste
+		((Square) GUI.gui.getGrid().getChildren().get((coords.column-1)*8+(coords.row-1))).restarAmenaza(color);
+	}
+	
 }

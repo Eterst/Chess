@@ -231,6 +231,7 @@ public class GUI extends Application {
 			ChessmanGUI chess= new ChessmanGUI("b", "P", temp);
 			temp.addChessman(chess);
 			Chessboard.chessboard.board[1][temp_column] = chess.chessman;
+			chess.chessman.amenazar();
 			temp_column++;
 		}
 		temp_column = 0;
@@ -239,6 +240,7 @@ public class GUI extends Application {
 			ChessmanGUI chess= new ChessmanGUI("w", "P", temp);
 			temp.addChessman(chess);
 			Chessboard.chessboard.board[6][temp_column] = chess.chessman;
+			chess.chessman.amenazar();
 			temp_column++;
 		}
 		//Chessboard.chessboard.printBoard();
@@ -248,82 +250,98 @@ public class GUI extends Application {
 		ChessmanGUI rook1 = new ChessmanGUI("b","R",temp);
 		temp.addChessman(rook1);
 		Chessboard.chessboard.board[0][0] = rook1.chessman;
+		rook1.chessman.amenazar();
 		
 		temp = (Square) grid.getChildren().get(56);
 		ChessmanGUI rook2 = new ChessmanGUI("b","R",temp);
 		temp.addChessman(rook2);
 		Chessboard.chessboard.board[0][7] = rook2.chessman;
+		rook2.chessman.amenazar();
 		//Rooks ( towers) White
 		temp = (Square) grid.getChildren().get(7);
 		ChessmanGUI rook3 = new ChessmanGUI("w","R",temp);
 		temp.addChessman(rook3);
 		Chessboard.chessboard.board[7][0] = rook3.chessman;
+		rook3.chessman.amenazar();
 		
 		temp = (Square) grid.getChildren().get(63);
 		ChessmanGUI rook4 = new ChessmanGUI("w","R",temp);
 		temp.addChessman(rook4);
 		Chessboard.chessboard.board[7][7] = rook3.chessman;
+		rook4.chessman.amenazar();
 		
 		//adding knights
 		temp = (Square) grid.getChildren().get(8);
 		ChessmanGUI knights1 = new ChessmanGUI("b","N",temp);
 		temp.addChessman(knights1);
 		Chessboard.chessboard.board[0][1] = knights1.chessman;
+		knights1.chessman.amenazar();
 		
 		temp = (Square) grid.getChildren().get(48);
 		ChessmanGUI knights2 = new ChessmanGUI("b","N",temp);
 		temp.addChessman(knights2);
 		Chessboard.chessboard.board[0][6] = knights2.chessman;
+		knights2.chessman.amenazar();
 		//White
 		temp = (Square) grid.getChildren().get(15);
 		ChessmanGUI knights3 = new ChessmanGUI("w","N",temp);
 		temp.addChessman(knights3);
 		Chessboard.chessboard.board[7][1] = knights3.chessman;
+		knights3.chessman.amenazar();
 		
 		temp = (Square) grid.getChildren().get(55);
 		ChessmanGUI knights4 = new ChessmanGUI("w","N",temp);
 		temp.addChessman(knights4);
 		Chessboard.chessboard.board[7][6] = knights4.chessman;
+		knights4.chessman.amenazar();
 		//adding bishops
 		temp = (Square) grid.getChildren().get(16);
 		ChessmanGUI bh1 = new ChessmanGUI("b","B",temp);
 		temp.addChessman(bh1);
 		Chessboard.chessboard.board[0][2] = bh1.chessman;
+		bh1.chessman.amenazar();
 		
 		temp = (Square) grid.getChildren().get(40);
 		ChessmanGUI bh2 = new ChessmanGUI("b","B",temp);
 		temp.addChessman(bh2);
 		Chessboard.chessboard.board[0][5] = bh2.chessman;
+		bh2.chessman.amenazar();
 		//White
 		temp = (Square) grid.getChildren().get(23);
 		ChessmanGUI bh3 = new ChessmanGUI("w","B",temp);
 		temp.addChessman(bh3);
 		Chessboard.chessboard.board[7][2] = bh3.chessman;
+		bh3.chessman.amenazar();
 		
 		temp = (Square) grid.getChildren().get(47);
 		ChessmanGUI bh4 = new ChessmanGUI("w","B",temp);
 		temp.addChessman(bh4);
 		Chessboard.chessboard.board[7][5] = bh4.chessman;
+		bh4.chessman.amenazar();
 		//adding kings
 		temp = (Square) grid.getChildren().get(32);
 		ChessmanGUI k1 = new ChessmanGUI("b","K",temp);
 		temp.addChessman(k1);
 		Chessboard.chessboard.board[0][4] = k1.chessman;
+		k1.chessman.amenazar();
 		//White
 		temp = (Square) grid.getChildren().get(39);
 		ChessmanGUI k2 = new ChessmanGUI("w","K",temp);
 		temp.addChessman(k2);
 		Chessboard.chessboard.board[7][4] = k2.chessman;
+		k2.chessman.amenazar();
 		//adding queens
 		temp = (Square) grid.getChildren().get(24);
 		ChessmanGUI q1 = new ChessmanGUI("b","Q",temp);
 		temp.addChessman(q1);
 		Chessboard.chessboard.board[0][3] = q1.chessman;
+		q1.chessman.amenazar();
 		//White
 		temp = (Square) grid.getChildren().get(31);
 		ChessmanGUI q2 = new ChessmanGUI("w","Q",temp);
 		temp.addChessman(q2);
 		Chessboard.chessboard.board[7][3] = q2.chessman;
+		q2.chessman.amenazar();
 	}
 	
 	@Override
