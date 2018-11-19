@@ -11,6 +11,10 @@ package src.application;
 public class Chessboard {
 	public Chessman[][] board;
 	
+	public Chessman blackKing;
+	
+	public Chessman whiteKing;
+	
 	public boolean turnWhite = true;
 	
 	public boolean playable;

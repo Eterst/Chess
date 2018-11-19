@@ -48,7 +48,7 @@ public class Rook extends Chessman{
 		}
 		return false;
 	}
-	@Override
+	/*@Override
 	public void amenazar() {
 		int numSquare = 0;
 		int i = 0;
@@ -121,5 +121,5 @@ public class Rook extends Chessman{
 			i++;
 			numSquare = coords.column+8*(coords.row+i);
 		}
-	}
+	}*/
 }

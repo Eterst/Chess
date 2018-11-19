@@ -32,10 +32,6 @@ public class Square extends Pane{
 	
 	public ChessmanGUI piece;
 	
-	public int amenazaNegra = 0;
-	
-	public int amenazaBlanca = 0;
-	
 	public EventHandler<Event> event;
 	
 	public void clearChessman() {
@@ -60,7 +56,42 @@ public class Square extends Pane{
 		GUI.gui.Desiluminate();
 		Chessman temp = Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column];
 		Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column] = null;
+		Chessman temp2 = Chessboard.chessboard.board[coords.row][coords.column];
 		Chessboard.chessboard.board[coords.row][coords.column] = temp;
+		
+		if(chess.chessman.type.compareTo("K") != 0) {
+			if(chess.chessman.color == 2) {
+				if(((King)Chessboard.chessboard.whiteKing).reyEnPeligro(Chessboard.chessboard.whiteKing.coords)) {
+					//cancelar movimiento  
+					Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column] = temp;
+					Chessboard.chessboard.board[coords.row][coords.column] = temp2;
+					//resta uno a mos movimientos
+					chess.chessman.movs--;
+					//cambia el turno para que cuando cambie quede el mismo
+					if(Chessboard.chessboard.turnWhite) {
+						Chessboard.chessboard.turnWhite = false;
+					}else if(!Chessboard.chessboard.turnWhite) {
+						Chessboard.chessboard.turnWhite = true;
+					}
+					return;
+				}
+			} else {
+				if(((King)Chessboard.chessboard.blackKing).reyEnPeligro(Chessboard.chessboard.blackKing.coords)) {
+					//cancelar movimiento
+					Chessboard.chessboard.board[chess.chessman.coords.row][chess.chessman.coords.column] = temp;
+					Chessboard.chessboard.board[coords.row][coords.column] = temp2;
+					//resta uno a mos movimientos
+					chess.chessman.movs--;
+					//cambia el turno para que cuando cambie quede el mismo
+					if(Chessboard.chessboard.turnWhite) {
+						Chessboard.chessboard.turnWhite = false;
+					}else if(!Chessboard.chessboard.turnWhite) {
+						Chessboard.chessboard.turnWhite = true;
+					}
+					return;
+				}
+			}
+		}
 		
 		System.out.println("Cambia");
 		chess.square.piece = null;
@@ -143,24 +174,6 @@ public class Square extends Pane{
 		}
 	}
 	
-	public void sumarAmenaza(int color) {
-		if(color == 1) {
-			++amenazaNegra;
-		}
-		else if(color == 2) {
-			++amenazaBlanca;
-		}
-	}
-	
-	public void restarAmenaza(int color) {
-		if(color == 1) {
-			--amenazaNegra;
-		}
-		else if(color == 2) {
-			--amenazaBlanca;
-		}
-	}
-	
 	public Square(int color, int i, int j) {
 		/*
 		row = i;
@@ -184,7 +197,6 @@ public class Square extends Pane{
 			public void handle(Event e) {
 				if(GUI.selection != null && Chessboard.chessboard.playable) {
 					if((piece == null && GUI.selection.chessman.verificarMov(coords)) || (piece != null && GUI.selection.chessman.verificarComer(coords))) {
-						GUI.selection.chessman.quitarAmenaza();//Quita la amenaza antes de mover la pieza 
 						moveChessman(GUI.selection);
 						if(GUI.selection.chessman.type.compareTo("P") == 0) {
 							if(GUI.selection.chessman.coords.row == 7) {//TODO En fase de pruebas 
@@ -203,7 +215,6 @@ public class Square extends Pane{
 						}
 						System.out.println("Despues: "+Chessboard.chessboard.turnWhite);
 						GUI.gui.updatePlayer();
-						piece.chessman.amenazar();//Coloca la amenaza despues de mover la pieza
 					}
 					System.out.println("Fil = "+coords.row+" Col: "+coords.column);
 					System.out.println("Your clicked a square");
