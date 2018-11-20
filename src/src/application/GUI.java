@@ -202,16 +202,16 @@ public class GUI extends Application {
 				if(board[i-1][j] == null) {
 					((Square) grid.getChildren().get(j*8+i-1)).Iluminar();
 				}
-				if(board[i-1][j-1] != null && board[i-1][j-1].color != board[i][j].color) {
+				if(j-1 >=0 && board[i-1][j-1] != null && board[i-1][j-1].color != board[i][j].color) {
 					((Square) grid.getChildren().get((j-1)*8+i-1)).IluminarRed();
 				}
-				if(board[i-1][j+1] != null && board[i-1][j+1].color != board[i][j].color) {
+				if(j+1 <8  &&board[i-1][j+1] != null && board[i-1][j+1].color != board[i][j].color) {
 					((Square) grid.getChildren().get((j+1)*8+i-1)).IluminarRed();
 				}
-				if(i == 3 && board[i][j-1] != null && board[i][j-1].movs == 1) {
+				if(j-1 >=0 &&i == 3 && board[i][j-1] != null && board[i][j-1].movs == 1) {
 					((Square) grid.getChildren().get((j-1)*8+i-1)).IluminarRed();
 				}
-				if(i == 3 && board[i][j+1] != null && board[i][j+1].movs == 1) {
+				if(j+1 < 8 &&i == 3 && board[i][j+1] != null && board[i][j+1].movs == 1) {
 					((Square) grid.getChildren().get((j+1)*8+i-1)).IluminarRed();
 				}
 			}else {
@@ -227,16 +227,16 @@ public class GUI extends Application {
 				if(board[i+1][j] == null) {
 					((Square) grid.getChildren().get(j*8+i+1)).Iluminar();
 				}
-				if(board[i+1][j+1] != null && board[i+1][j+1].color != board[i][j].color) {
+				if(j+1 < 8 && board[i+1][j+1] != null && board[i+1][j+1].color != board[i][j].color) {
 					((Square) grid.getChildren().get((j+1)*8+i+1)).IluminarRed();
 				}
-				if(board[i+1][j-1] != null && board[i+1][j-1].color != board[i][j].color) {
+				if(j-1 >= 0 &&board[i+1][j-1] != null && board[i+1][j-1].color != board[i][j].color) {
 					((Square) grid.getChildren().get((j-1)*8+i+1)).IluminarRed();
 				}
-				if(i == 4 && board[i][j+1] != null && board[i][j+1].movs == 1) {
+				if(j+1 < 8 &&i == 4 && board[i][j+1] != null && board[i][j+1].movs == 1) {
 					((Square) grid.getChildren().get((j+1)*8+i+1)).IluminarRed();
 				}
-				if(i == 4 && board[i][j-1] != null && board[i][j-1].movs == 1) {
+				if(j-1 >= 0 &&i == 4 && board[i][j-1] != null && board[i][j-1].movs == 1) {
 					((Square) grid.getChildren().get((j-1)*8+i+1)).IluminarRed();
 				}
 			}
