@@ -78,7 +78,82 @@ public class King extends Chessman{
 			}
 		}
 		//Knight
-		
+		//Norte
+		if(coords.row+2 <= 7 && coords.column-1 >= 0) {
+			if(Chessboard.chessboard.board[coords.row+2][coords.column-1] != null) {
+				if(Chessboard.chessboard.board[coords.row+2][coords.column-1].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row+2][coords.column-1].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		if(coords.row+2 <= 7 && coords.column+1 <= 7) {
+			if(Chessboard.chessboard.board[coords.row+2][coords.column+1] != null) {
+				if(Chessboard.chessboard.board[coords.row+2][coords.column+1].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row+2][coords.column+1].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		//Este
+		if(coords.row+1 <= 7 && coords.column+2 <= 7) {
+			if(Chessboard.chessboard.board[coords.row+1][coords.column+2] != null) {
+				if(Chessboard.chessboard.board[coords.row+1][coords.column+2].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row+1][coords.column+2].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		if(coords.row-1 >= 0 && coords.column+2 <= 7) {
+			if(Chessboard.chessboard.board[coords.row-1][coords.column+2] != null) {
+				if(Chessboard.chessboard.board[coords.row-1][coords.column+2].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row-1][coords.column+2].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		//Sur
+		if(coords.row-2 >= 0 && coords.column-1 >= 0) {
+			if(Chessboard.chessboard.board[coords.row-2][coords.column-1] != null) {
+				if(Chessboard.chessboard.board[coords.row-2][coords.column-1].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row-2][coords.column-1].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		if(coords.row-2 >= 0 && coords.column+1 <= 7) {
+			if(Chessboard.chessboard.board[coords.row-2][coords.column-1] != null) {
+				if(Chessboard.chessboard.board[coords.row-2][coords.column-1].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row-2][coords.column-1].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		//Oeste
+		if(coords.row+1 <= 7 && coords.column-2 >= 0) {
+			if(Chessboard.chessboard.board[coords.row+1][coords.column-2] != null) {
+				if(Chessboard.chessboard.board[coords.row+1][coords.column-2].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row+1][coords.column-2].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
+		if(coords.row-1 >= 0 && coords.column-2 >= 0) { 
+			if(Chessboard.chessboard.board[coords.row-1][coords.column-2] != null) {
+				if(Chessboard.chessboard.board[coords.row-1][coords.column-2].color != this.color) {
+					if(Chessboard.chessboard.board[coords.row-1][coords.column-2].type.compareTo("N") == 0) {
+						return true;
+					}
+				}
+			}
+		}
 		//Queen, Bishop, Rook
 		int i = 0;
 		Chessman temp = null;
